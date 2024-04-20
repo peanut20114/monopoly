@@ -10,31 +10,26 @@ using System.Windows.Forms;
 
 namespace Client
 {
-    public partial class Account : Form
+    public partial class Register : Form
     {
-        public Account()
+        public Register()
         {
             InitializeComponent();
         }
 
-        private void Login_Load(object sender, EventArgs e)
+        private void label4_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void LoginBtn_Click(object sender, EventArgs e)
+        private void DoneButton_Click(object sender, EventArgs e)
         {
             Login login = new Login();
             login.Show();
+            this.Close();
         }
 
-        private void RegisterBtn_Click(object sender, EventArgs e)
-        {
-            Register register = new Register();
-            register.Show();
-        }
-
-        private void label1_Click(object sender, EventArgs e)
+        private void Register_Load(object sender, EventArgs e)
         {
 
         }
