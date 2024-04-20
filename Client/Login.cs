@@ -18,20 +18,10 @@ namespace Client
             InitializeComponent();
             
         }
-      
-        private void richTextBox1_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void continueBtn_Click(object sender, EventArgs e)
         {
-            MainMenu menu = new MainMenu();
+            HomePage menu = new HomePage();
             menu.Show();
             this.Close();
         }

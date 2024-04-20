@@ -37,45 +37,43 @@
             // 
             // AccountInput
             // 
-            this.AccountInput.Location = new System.Drawing.Point(89, 194);
-            this.AccountInput.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.AccountInput.Location = new System.Drawing.Point(136, 205);
+            this.AccountInput.Margin = new System.Windows.Forms.Padding(2);
             this.AccountInput.Name = "AccountInput";
             this.AccountInput.Size = new System.Drawing.Size(304, 29);
             this.AccountInput.TabIndex = 0;
             this.AccountInput.Text = "";
-            this.AccountInput.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(31, 174);
+            this.label1.Location = new System.Drawing.Point(100, 176);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(297, 18);
+            this.label1.Size = new System.Drawing.Size(298, 20);
             this.label1.TabIndex = 1;
             this.label1.Text = "Your email, phone number or account name";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(31, 247);
+            this.label2.Location = new System.Drawing.Point(100, 246);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(108, 18);
+            this.label2.Size = new System.Drawing.Size(105, 20);
             this.label2.TabIndex = 2;
             this.label2.Text = "Your password";
             // 
             // PasswordInput
             // 
-            this.PasswordInput.Location = new System.Drawing.Point(89, 267);
-            this.PasswordInput.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.PasswordInput.Location = new System.Drawing.Point(136, 276);
+            this.PasswordInput.Margin = new System.Windows.Forms.Padding(2);
             this.PasswordInput.Name = "PasswordInput";
             this.PasswordInput.Size = new System.Drawing.Size(304, 29);
             this.PasswordInput.TabIndex = 3;
@@ -83,9 +81,9 @@
             // 
             // continueBtn
             // 
-            this.continueBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.continueBtn.Location = new System.Drawing.Point(242, 322);
-            this.continueBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.continueBtn.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.continueBtn.Location = new System.Drawing.Point(237, 318);
+            this.continueBtn.Margin = new System.Windows.Forms.Padding(2);
             this.continueBtn.Name = "continueBtn";
             this.continueBtn.Size = new System.Drawing.Size(110, 32);
             this.continueBtn.TabIndex = 4;
@@ -98,14 +96,14 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Client.Properties.Resources.Help;
-            this.ClientSize = new System.Drawing.Size(601, 365);
+            this.ClientSize = new System.Drawing.Size(584, 361);
             this.Controls.Add(this.continueBtn);
             this.Controls.Add(this.PasswordInput);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.AccountInput);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Login";

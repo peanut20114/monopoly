@@ -33,10 +33,5 @@ namespace Client
             Register register = new Register();
             register.Show();
         }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

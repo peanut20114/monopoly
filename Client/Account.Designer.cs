@@ -38,9 +38,9 @@
             this.LoginBtn.BackColor = System.Drawing.Color.Transparent;
             this.LoginBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.LoginBtn.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.LoginBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.LoginBtn.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LoginBtn.ForeColor = System.Drawing.Color.White;
-            this.LoginBtn.Location = new System.Drawing.Point(225, 185);
+            this.LoginBtn.Location = new System.Drawing.Point(205, 200);
             this.LoginBtn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.LoginBtn.Name = "LoginBtn";
             this.LoginBtn.Size = new System.Drawing.Size(176, 38);
@@ -55,14 +55,14 @@
             this.RegisterBtn.BackColor = System.Drawing.Color.Transparent;
             this.RegisterBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.RegisterBtn.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.RegisterBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.RegisterBtn.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RegisterBtn.ForeColor = System.Drawing.Color.White;
-            this.RegisterBtn.Location = new System.Drawing.Point(225, 260);
+            this.RegisterBtn.Location = new System.Drawing.Point(205, 275);
             this.RegisterBtn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.RegisterBtn.Name = "RegisterBtn";
             this.RegisterBtn.Size = new System.Drawing.Size(176, 42);
             this.RegisterBtn.TabIndex = 7;
-            this.RegisterBtn.Text = "Register";
+            this.RegisterBtn.Text = "Sign up";
             this.RegisterBtn.UseVisualStyleBackColor = true;
             this.RegisterBtn.Click += new System.EventHandler(this.RegisterBtn_Click);
             // 
@@ -71,10 +71,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Client.Properties.Resources.Help;
-            this.ClientSize = new System.Drawing.Size(605, 327);
+            this.ClientSize = new System.Drawing.Size(584, 361);
             this.Controls.Add(this.RegisterBtn);
             this.Controls.Add(this.LoginBtn);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Account";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
