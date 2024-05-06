@@ -6,6 +6,7 @@ namespace Client
     internal static class Program
     {
         public static ColorChoosing colorChoosing;
+        public static string UserID;
         [STAThread]
         private static void Main()
         {
@@ -14,6 +15,19 @@ namespace Client
             Application.Run(new Account());
            // Application.Run(new MainMenu());
         }
+    }
+
+    internal class User
+    {
+        public string ID { get; set; }
+        public string UserName { get; set; }
+        public string Password { get; set; }
+        public string Birthday { get; set; }
+        public string Country { get; set; }
+        public string Email { get; set; }
+        public string Last_Logged_In { get; set; }
+        public int[] Friends { get; set; }
+        public string Register_At { get; set; }
     }
     internal static class Gamemodes
     {

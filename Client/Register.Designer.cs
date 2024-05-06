@@ -111,7 +111,6 @@
             this.label4.Size = new System.Drawing.Size(70, 20);
             this.label4.TabIndex = 6;
             this.label4.Text = "Password";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // richTextBox1
             // 
@@ -272,7 +271,6 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Register";
             this.Text = "Register";
-            this.Load += new System.EventHandler(this.Register_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
