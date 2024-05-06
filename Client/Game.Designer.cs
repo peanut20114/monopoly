@@ -789,7 +789,7 @@
             this.Name = "Game";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Monopoly! made by /akilum";
+            this.Text = "Gameplay";
             ((System.ComponentModel.ISupportInitialize)(this.redPawnIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bluePawnIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tile0)).EndInit();
