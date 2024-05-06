@@ -22,7 +22,7 @@ namespace Client
             listView1.View = View.Details;
             listView1.Scrollable = false;
 
-            listView1.Columns.Add("Lastest Plays", 100, HorizontalAlignment.Center);
+            listView1.Columns.Add("Lastest Plays", 160, HorizontalAlignment.Center);
             listView1.Columns.Add("Result", 100, HorizontalAlignment.Center);
             listView1.Columns.Add("Total Time", 100, HorizontalAlignment.Center);
             listView1.Columns.Add("Total House", 100, HorizontalAlignment.Center);
@@ -30,7 +30,7 @@ namespace Client
 
             for (int i = 0; i < 5; i++)
             {
-                ListViewItem item = new ListViewItem(GetRandomTimeStart());
+                ListViewItem item = new ListViewItem(GetRandomDateTime(DateTime.Now, DateTime.Now.AddDays(14)).ToString("dd/MM/yyyy HH:mm:ss"));
 
                 item.SubItems.Add(new ListViewItem.ListViewSubItem(item, new Random().Next(2) == 0 ? "Win" : "Lose"));
                 item.SubItems.Add(new ListViewItem.ListViewSubItem(item, GetRandomTimePlay()));
@@ -40,19 +40,6 @@ namespace Client
                 listView1.Items.Add(item);
             }
         }
-        private string GetRandomTimeStart()
-        {
-            Random random = new Random();
-
-            TimeSpan startTime = new TimeSpan(9, 0, 0);
-            TimeSpan endTime = new TimeSpan(20, 0, 0);
-
-            int rangeMinutes = (int)(endTime - startTime).TotalMinutes;
-            int randomMinutes = random.Next(rangeMinutes);
-            TimeSpan randomTime = startTime.Add(TimeSpan.FromMinutes(randomMinutes));
-
-            return randomTime.ToString(@"hh\:mm\:ss");
-        }
         private string GetRandomTimePlay()
         {
             Random random = new Random();
@@ -61,7 +48,13 @@ namespace Client
 
             TimeSpan randomTime = TimeSpan.FromMinutes(randomMinutes);
 
-            return randomTime.ToString(@"h\:mm\:ss");
+            return randomTime.ToString(@"hh\:mm\:ss");
+        }
+        private DateTime GetRandomDateTime(DateTime from, DateTime to)
+        {
+            Random random = new Random();
+            int range = (to - from).Days;
+            return from.AddDays(random.Next(range));
         }
 
     }
