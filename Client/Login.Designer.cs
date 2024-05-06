@@ -28,13 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.AccountInput = new System.Windows.Forms.RichTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.PasswordInput = new System.Windows.Forms.RichTextBox();
             this.continueBtn = new System.Windows.Forms.Button();
+            this.AccountInput = new System.Windows.Forms.TextBox();
+            this.PasswordInput = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
+<<<<<<< HEAD
+=======
             // AccountInput
             // 
             this.AccountInput.Location = new System.Drawing.Point(272, 394);
@@ -44,6 +46,7 @@
             this.AccountInput.TabIndex = 0;
             this.AccountInput.Text = "";
             // 
+>>>>>>> b42af44c8ddd5e45e38a0f4639a329326095fe76
             // label1
             // 
             this.label1.AutoSize = true;
@@ -77,6 +80,8 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Your password";
             // 
+<<<<<<< HEAD
+=======
             // PasswordInput
             // 
             this.PasswordInput.HideSelection = false;
@@ -87,6 +92,7 @@
             this.PasswordInput.TabIndex = 3;
             this.PasswordInput.Text = "";
             // 
+>>>>>>> b42af44c8ddd5e45e38a0f4639a329326095fe76
             // continueBtn
             // 
             this.continueBtn.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -103,17 +109,37 @@
             this.continueBtn.UseVisualStyleBackColor = true;
             this.continueBtn.Click += new System.EventHandler(this.continueBtn_Click);
             // 
+            // AccountInput
+            // 
+            this.AccountInput.Location = new System.Drawing.Point(156, 314);
+            this.AccountInput.Name = "AccountInput";
+            this.AccountInput.Size = new System.Drawing.Size(439, 26);
+            this.AccountInput.TabIndex = 5;
+            // 
+            // PasswordInput
+            // 
+            this.PasswordInput.Location = new System.Drawing.Point(156, 412);
+            this.PasswordInput.Name = "PasswordInput";
+            this.PasswordInput.Size = new System.Drawing.Size(439, 26);
+            this.PasswordInput.TabIndex = 6;
+            this.PasswordInput.UseSystemPasswordChar = true;
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Client.Properties.Resources.Help;
+<<<<<<< HEAD
+            this.ClientSize = new System.Drawing.Size(876, 555);
+=======
             this.ClientSize = new System.Drawing.Size(1168, 694);
             this.Controls.Add(this.continueBtn);
+>>>>>>> b42af44c8ddd5e45e38a0f4639a329326095fe76
             this.Controls.Add(this.PasswordInput);
+            this.Controls.Add(this.AccountInput);
+            this.Controls.Add(this.continueBtn);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.AccountInput);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
@@ -127,11 +153,10 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.RichTextBox AccountInput;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.RichTextBox PasswordInput;
         private System.Windows.Forms.Button continueBtn;
+        private System.Windows.Forms.TextBox AccountInput;
+        private System.Windows.Forms.TextBox PasswordInput;
     }
 }
