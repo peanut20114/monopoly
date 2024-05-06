@@ -50,12 +50,21 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
+<<<<<<< Updated upstream
             this.label1.Location = new System.Drawing.Point(200, 339);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(338, 41);
             this.label1.TabIndex = 1;
             this.label1.Text = "Your email or user name";
+=======
+            this.label1.Location = new System.Drawing.Point(200, 338);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(600, 41);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Your email or username";
+>>>>>>> Stashed changes
             // 
             // label2
             // 
@@ -63,7 +72,11 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
+<<<<<<< Updated upstream
             this.label2.Location = new System.Drawing.Point(200, 472);
+=======
+            this.label2.Location = new System.Drawing.Point(200, 473);
+>>>>>>> Stashed changes
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(212, 41);
@@ -72,7 +85,10 @@
             // 
             // PasswordInput
             // 
+<<<<<<< Updated upstream
             this.PasswordInput.HideSelection = false;
+=======
+>>>>>>> Stashed changes
             this.PasswordInput.Location = new System.Drawing.Point(272, 531);
             this.PasswordInput.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.PasswordInput.Name = "PasswordInput";
@@ -83,10 +99,17 @@
             // continueBtn
             // 
             this.continueBtn.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+<<<<<<< Updated upstream
             this.continueBtn.Location = new System.Drawing.Point(475, 611);
             this.continueBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.continueBtn.Name = "continueBtn";
             this.continueBtn.Size = new System.Drawing.Size(220, 61);
+=======
+            this.continueBtn.Location = new System.Drawing.Point(474, 612);
+            this.continueBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.continueBtn.Name = "continueBtn";
+            this.continueBtn.Size = new System.Drawing.Size(220, 62);
+>>>>>>> Stashed changes
             this.continueBtn.TabIndex = 4;
             this.continueBtn.Text = "Continue";
             this.continueBtn.UseVisualStyleBackColor = true;
