@@ -13,7 +13,6 @@ namespace Client
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Account());
-           // Application.Run(new MainMenu());
         }
     }
 
