@@ -9,29 +9,31 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json;
 using System.IO;
-using System.Numerics;
-using FirebaseAdmin.Auth;
+using System.Runtime.Remoting.Contexts;
+
 
 namespace Client
 {
     public partial class Friends : Form
-    {   public class Player
+    {
+
+        public class Player
         {
-            public string Username { get; set; }
-            public string LastLoggedIn { get; set; }
+            public string userName { get; set; }
+            public string lastLoggedIn { get; set; }
         }
+
         private Dictionary<string, Player> players;
-
-
         public Friends()
         {
             InitializeComponent();
+            LoadPlayerData();
         }
 
-        private void LoadUserData()
+        private void LoadPlayerData()
         {
             string jsonFilePath = "D:\\UIT\\LapTrinhMang\\monopoly\\Fake_Database\\USER.json";
-            if (File.Exists(jsonFilePath)) 
+            if(File.Exists(jsonFilePath)) 
             {
                 string jsonText = File.ReadAllText(jsonFilePath);
                 players = JsonConvert.DeserializeObject<Dictionary<string, Player>>(jsonText);
@@ -43,19 +45,19 @@ namespace Client
             }
         }
 
-        private void SearchButton_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-            string searchUsername = richTextBox1.Text;
-            List<Player> searchResults = players.Values.Where(u  => u.Username == searchUsername).ToList();
+            string search = richTextBox1.Text;
+            List<Player> searchResults = players.Values.Where(u => u.userName == search).ToList();
 
             listView1.Items.Clear();
 
-            foreach (var player in searchResults) 
+            foreach(var player in searchResults)
             {
-
+                ListViewItem item = new ListViewItem(player.userName);
+                item.SubItems.Add(player.lastLoggedIn);
+                listView1.Items.Add(item);
             }
         }
-
-       
     }
 }
