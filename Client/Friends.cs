@@ -3,31 +3,32 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Newtonsoft.Json;
-using System.IO;
-using System.Runtime.Remoting.Contexts;
+using FireSharp.Config;
+using FireSharp.Interfaces;
+using FireSharp.Response;
 
 
 namespace Client
 {
     public partial class Friends : Form
     {
-
-        public class Player
+        IFirebaseConfig config = new FirebaseConfig
         {
-            public string userName { get; set; }
-            public string lastLoggedIn { get; set; }
-        }
+            AuthSecret = "RupkJmOpqVD7u65mZo31WEtDRqKWpkN2Oj6UtbNT",
+            BasePath = "https://monopoly-8058b-default-rtdb.asia-southeast1.firebasedatabase.app/"
+        };
 
-        private Dictionary<string, Player> players;
+        IFirebaseClient client;
+
         public Friends()
         {
+            client = new FireSharp.FirebaseClient(config);
             InitializeComponent();
-            LoadPlayerData();
         }
 
         private void LoadPlayerData()
@@ -45,18 +46,32 @@ namespace Client
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private async  void button1_Click(object sender, EventArgs e)
         {
-            string search = richTextBox1.Text;
-            List<Player> searchResults = players.Values.Where(u => u.userName == search).ToList();
-
+            FirebaseResponse res = await client.GetAsync("USER/");
+            dynamic IDs = res.ResultAs<dynamic>();
+            bool found = false;
             listView1.Items.Clear();
-
-            foreach(var player in searchResults)
+            foreach (var id in IDs)
             {
-                ListViewItem item = new ListViewItem(player.userName);
-                item.SubItems.Add(player.lastLoggedIn);
-                listView1.Items.Add(item);
+                string userID = id.Name;
+                FirebaseResponse userRes = await client.GetAsync("USER/" + userID);
+                User userdata = userRes.ResultAs<User>();
+                string userName = userdata.username;
+                string lastLoggedIn = userdata.last_logged_in;
+
+                if (SearchBox.Text.ToLower() == userName.ToLower())
+                {
+                    found = true;
+                    ListViewItem item = new ListViewItem(userName);
+                    item.SubItems.Add(lastLoggedIn.ToString());
+                    listView1.Items.Add(item);
+                    break;
+                }
+            }
+            if (!found)
+            {
+                MessageBox.Show("Player not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
