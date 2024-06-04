@@ -1,4 +1,7 @@
-﻿using System;
+﻿using FireSharp.Config;
+using FireSharp.Interfaces;
+using FireSharp.Response;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,10 +17,17 @@ namespace Client
 {
     public partial class HomePage : Form
     {
+        IFirebaseConfig config = new FirebaseConfig
+        {
+            AuthSecret = "RupkJmOpqVD7u65mZo31WEtDRqKWpkN2Oj6UtbNT",
+            BasePath = "https://monopoly-8058b-default-rtdb.asia-southeast1.firebasedatabase.app/"
+        };
+
+        IFirebaseClient client;
         public HomePage()
         {
+            client = new FireSharp.FirebaseClient(config);
             InitializeComponent();
-            LoadRankings();
         }
 
         private void btn_PlayGame_Click(object sender, EventArgs e)
@@ -25,38 +35,6 @@ namespace Client
             MainMenu menu = new MainMenu();
             menu.Show();
             this.Close();
-        }
-        private void LoadRankings()
-        {
-
-            string[] players = new string[]
-            {
-                "John",
-                "Emily",
-                "Sarah",
-                "Jessica",
-                "Sophia",
-                "James",
-                "Olivia"
-            };
-            
-            listView1.View = View.Details;
-            listView1.Scrollable = false;
-
-            listView1.Columns.Add("", 40, HorizontalAlignment.Center);
-            listView1.Columns.Add("", 200, HorizontalAlignment.Center);
-            listView1.HeaderStyle = ColumnHeaderStyle.None;
-
-            Random random = new Random();
-
-            foreach (string player in players)
-            {
-                int randomNumber = random.Next(15, 21);
-                ListViewItem item = new ListViewItem("");
-                listView1.Items.Add(item);
-                ListViewItem.ListViewSubItem p = new ListViewItem.ListViewSubItem(item, $"{ player } ({ randomNumber } games)");
-                item.SubItems.Add(p);
-            }
         }
 
         private void btn_LogOut_Click(object sender, EventArgs e)
@@ -86,6 +64,49 @@ namespace Client
         {
             History form = new History();
             form.Show();
+        }
+
+        private async void HomePage_Load(object sender, EventArgs e)
+        {
+            listView1.Columns.Add("", 40, HorizontalAlignment.Center);
+            listView1.Columns.Add("", 200, HorizontalAlignment.Center);
+            listView1.HeaderStyle = ColumnHeaderStyle.None;
+
+            listView1.View = View.Details;
+            listView1.Scrollable = false;
+
+            FirebaseResponse res = await client.GetAsync("LEADERBOARD/");
+            dynamic IDs = res.ResultAs<dynamic>();
+
+            string[] leaderBoard = new string[7];
+
+            foreach (var id in IDs)
+            {
+                string rankID = id.Name;
+                FirebaseResponse rankRes = await client.GetAsync("LEADERBOARD/" + rankID);
+                Leaderboard rankData = rankRes.ResultAs<Leaderboard>();
+                string userID = rankData.user_id;
+                int userRank = rankData.rank;
+                int userScore = rankData.score;
+                if (userID != null && userRank <= 7)
+                {
+                    FirebaseResponse userRes = await client.GetAsync("USER/" + userID);
+                    User userdata = userRes.ResultAs<User>();
+                    string userName = userdata.username;
+                    leaderBoard[userRank - 1] = $"{userRank}. {userName} ({userScore} scores)";
+                }
+                if (userID == Program.UserID) {
+                    Program.UserRank = userRank;
+                }
+            }
+
+            foreach (string player in leaderBoard)
+            {
+                ListViewItem item = new ListViewItem("");
+                listView1.Items.Add(item);
+                ListViewItem.ListViewSubItem p = new ListViewItem.ListViewSubItem(item, player);
+                item.SubItems.Add(p);
+            }
         }
     }
 }

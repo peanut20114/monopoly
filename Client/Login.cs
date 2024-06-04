@@ -28,7 +28,6 @@ namespace Client
         {
             client = new FireSharp.FirebaseClient(config);
             InitializeComponent();
-            
         }
 
         private async void continueBtn_Click(object sender, EventArgs e)
@@ -42,14 +41,15 @@ namespace Client
                 string userID = id.Name;
                 FirebaseResponse userRes = await client.GetAsync("USER/" + userID);
                 User userdata = userRes.ResultAs<User>();
-                string userName = userdata.UserName;
-                string userEmail = userdata.Email;
-                string userPassword = userdata.Password;
+                string userName = userdata.username;
+                string userEmail = userdata.email;
+                string userPassword = userdata.password;
 
                 if ((userName == AccountInput.Text || userEmail == AccountInput.Text) && userPassword == PasswordInput.Text)
                 {
                     LoginFlag = true;
                     Program.UserID = userID;
+                    Program.UserName = userName;
                     break;
                 }
             }
@@ -61,9 +61,20 @@ namespace Client
             }
             else
             {
-                MessageBox.Show("Lỗi đăng nhập");
+                Error.Text = "Invalid username or password.";
             }
         }
 
+        private void PasswordInput_TextChanged(object sender, EventArgs e)
+        {
+            PasswordInput.UseSystemPasswordChar = true;
+            PasswordInput.PasswordChar = '●';
+        }
+
+        private void ForgotLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            ForgotPassword form = new ForgotPassword();
+            form.Show();
+        }
     }
 }

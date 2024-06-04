@@ -1,13 +1,13 @@
 ﻿using System;
+using System.Windows.Forms;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using FireSharp.Config;
 using FireSharp.Interfaces;
 using FireSharp.Response;
@@ -24,29 +24,13 @@ namespace Client
         };
 
         IFirebaseClient client;
-
         public Friends()
         {
             client = new FireSharp.FirebaseClient(config);
             InitializeComponent();
         }
 
-        private void LoadPlayerData()
-        {
-            string jsonFilePath = "D:\\UIT\\LapTrinhMang\\monopoly\\Fake_Database\\USER.json";
-            if(File.Exists(jsonFilePath)) 
-            {
-                string jsonText = File.ReadAllText(jsonFilePath);
-                players = JsonConvert.DeserializeObject<Dictionary<string, Player>>(jsonText);
-            }
-            else
-            {
-                MessageBox.Show("Player not found.");
-                players = new Dictionary<string, Player>();
-            }
-        }
-
-        private async  void button1_Click(object sender, EventArgs e)
+        private async void SearchButton_Click(object sender, EventArgs e)
         {
             FirebaseResponse res = await client.GetAsync("USER/");
             dynamic IDs = res.ResultAs<dynamic>();
@@ -58,12 +42,16 @@ namespace Client
                 FirebaseResponse userRes = await client.GetAsync("USER/" + userID);
                 User userdata = userRes.ResultAs<User>();
                 string userName = userdata.username;
+                string birthday = userdata.birthday;
+                string country = userdata.country;
                 string lastLoggedIn = userdata.last_logged_in;
 
-                if (SearchBox.Text.ToLower() == userName.ToLower())
+                if (SearchBox.Text.Trim().ToLower() == userName.Trim().ToLower())
                 {
                     found = true;
                     ListViewItem item = new ListViewItem(userName);
+                    item.SubItems.Add(birthday.ToString());
+                    item.SubItems.Add(country.ToString());
                     item.SubItems.Add(lastLoggedIn.ToString());
                     listView1.Items.Add(item);
                     break;

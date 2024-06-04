@@ -7,55 +7,66 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FireSharp.Config;
+using FireSharp.Interfaces;
+using FireSharp.Response;
 
 namespace Client
 {
     public partial class History : Form
     {
+        IFirebaseConfig config = new FirebaseConfig
+        {
+            AuthSecret = "RupkJmOpqVD7u65mZo31WEtDRqKWpkN2Oj6UtbNT",
+            BasePath = "https://monopoly-8058b-default-rtdb.asia-southeast1.firebasedatabase.app/"
+        };
+
+        IFirebaseClient client;
         public History()
         {
+            client = new FireSharp.FirebaseClient(config);
             InitializeComponent();
-            Load();
         }
-        private void Load()
+
+        private async void History_Load(object sender, EventArgs e)
         {
-            listView1.View = View.Details;
-            listView1.Scrollable = false;
+            label1.Text = Program.UserName;
+            richTextBox4.Text = Program.UserRank.ToString();
 
-            listView1.Columns.Add("Lastest Plays", 160, HorizontalAlignment.Center);
-            listView1.Columns.Add("Result", 100, HorizontalAlignment.Center);
-            listView1.Columns.Add("Total Time", 100, HorizontalAlignment.Center);
-            listView1.Columns.Add("Total House", 100, HorizontalAlignment.Center);
-            listView1.Columns.Add("Total Amount", 100, HorizontalAlignment.Center);
-
-            for (int i = 0; i < 5; i++)
+            FirebaseResponse res = await client.GetAsync("SESSION/");
+            dynamic IDs = res.ResultAs<dynamic>();
+            listView1.Items.Clear();
+            foreach (var id in IDs)
             {
-                ListViewItem item = new ListViewItem(GetRandomDateTime(DateTime.Now, DateTime.Now.AddDays(14)).ToString("dd/MM/yyyy HH:mm:ss"));
+                string sesionID = id.Name;
+                FirebaseResponse sessionRes = await client.GetAsync("SESSION/" + sesionID);
+                Session sessionData = sessionRes.ResultAs<Session>();
+                string userID = sessionData.user_id;
+                if (userID.ToString() == Program.UserID.ToString())
+                {
+                    ListViewItem item = null;
+                    if (sessionData.result == 0)
+                    {
+                        item = new ListViewItem("Defeaut");
+                    }
+                    else
+                    {
+                        item = new ListViewItem("Victory");
+                    }
 
-                item.SubItems.Add(new ListViewItem.ListViewSubItem(item, new Random().Next(2) == 0 ? "Win" : "Lose"));
-                item.SubItems.Add(new ListViewItem.ListViewSubItem(item, GetRandomTimePlay()));
-                item.SubItems.Add(new ListViewItem.ListViewSubItem(item, new Random().Next(5, 10).ToString()));
-                item.SubItems.Add(new ListViewItem.ListViewSubItem(item, new Random().Next(100000, 200000).ToString()));
-
-                listView1.Items.Add(item);
+                    if (sessionData.module_play == 0)
+                    {
+                        item.SubItems.Add("Single Player");
+                    }
+                    else
+                    {
+                        item.SubItems.Add("Multi PLayer");
+                    }
+                    item.SubItems.Add(sessionData.start_at.ToString());
+                    item.SubItems.Add(sessionData.end_at.ToString());
+                    listView1.Items.Add(item);
+                }
             }
         }
-        private string GetRandomTimePlay()
-        {
-            Random random = new Random();
-
-            int randomMinutes = random.Next(0, 91);
-
-            TimeSpan randomTime = TimeSpan.FromMinutes(randomMinutes);
-
-            return randomTime.ToString(@"hh\:mm\:ss");
-        }
-        private DateTime GetRandomDateTime(DateTime from, DateTime to)
-        {
-            Random random = new Random();
-            int range = (to - from).Days;
-            return from.AddDays(random.Next(range));
-        }
-
     }
 }

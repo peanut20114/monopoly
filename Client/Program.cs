@@ -7,6 +7,8 @@ namespace Client
     {
         public static ColorChoosing colorChoosing;
         public static string UserID;
+        public static string UserName;
+        public static int UserRank;
         [STAThread]
         private static void Main()
         {
@@ -18,15 +20,30 @@ namespace Client
 
     internal class User
     {
-        public string ID { get; set; }
-        public string UserName { get; set; }
-        public string Password { get; set; }
-        public string Birthday { get; set; }
-        public string Country { get; set; }
-        public string Email { get; set; }
-        public string Last_Logged_In { get; set; }
-        public int[] Friends { get; set; }
-        public string Register_At { get; set; }
+        public string username { get; set; }
+        public string password { get; set; }
+        public string birthday { get; set; }
+        public string country { get; set; }
+        public string email { get; set; }
+        public string last_logged_in { get; set; }
+        public string register_at { get; set; }
+        public int[] friends { get; set; }
+    }
+    internal class Leaderboard
+    {
+        public string user_id { get; set; }
+        public int rank { get; set; }
+        public int score { get; set; }
+        public string start_time { get; set; }
+        public string end_time { get; set; }
+    }
+    internal class Session
+    {
+        public string user_id { get; set; }
+        public int result { get; set; }
+        public int module_play { get; set; }
+        public string start_at { get; set; }
+        public string end_at { get; set; }
     }
     internal static class Gamemodes
     {
