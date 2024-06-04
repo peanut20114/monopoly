@@ -36,7 +36,21 @@ namespace Client
             richTextBox2.Text = data.username;
             richTextBox3.Text = data.birthday;
             richTextBox4.Text = data.country;
-            richTextBox5.Text = data.last_logged_in;
+            richTextBox5.Text = data.register_at;
+        }
+
+        private void changePassLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            ChangePassword form = new ChangePassword();
+            form.Show();
+            this.Close();
+        }
+
+        private void editProfileLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            EditProfile form = new EditProfile();
+            form.Show();
+            this.Close();
         }
     }
 }

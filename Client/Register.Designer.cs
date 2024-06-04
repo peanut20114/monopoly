@@ -266,9 +266,8 @@
             this.Error.ForeColor = System.Drawing.Color.Red;
             this.Error.Location = new System.Drawing.Point(373, 331);
             this.Error.Name = "Error";
-            this.Error.Size = new System.Drawing.Size(77, 18);
+            this.Error.Size = new System.Drawing.Size(0, 18);
             this.Error.TabIndex = 13;
-            this.Error.Text = "Username";
             // 
             // Register
             // 

@@ -76,5 +76,11 @@ namespace Client
             ForgotPassword form = new ForgotPassword();
             form.Show();
         }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+            AccountInput.Text = "user01example@gmail.com";
+            PasswordInput.Text = "guestplayer0";
+        }
     }
 }
