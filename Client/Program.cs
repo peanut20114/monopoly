@@ -39,11 +39,12 @@ namespace Client
     }
     internal class Session
     {
-        public string user_id { get; set; }
+        public string[] user_id { get; set; }
         public int result { get; set; }
         public int module_play { get; set; }
-        public string start_at { get; set; }
-        public string end_at { get; set; }
+        public DateTime start_at { get; set; }
+        public DateTime end_at { get; set; }
+        public string winner {  get; set; }
     }
     internal static class Gamemodes
     {

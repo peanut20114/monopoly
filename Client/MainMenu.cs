@@ -5,8 +5,11 @@ namespace Client
 {
     public partial class MainMenu : Form
     {
-        public MainMenu()
+        string currID, currName;
+        public MainMenu(string userID, string userName)
         {
+            currID = userID;
+            currName = userName;
             InitializeComponent();
         }
         private void StartSingleplayerGameBtn_Click(object sender, EventArgs e)
@@ -14,7 +17,7 @@ namespace Client
             Gamemodes.Singleplayer = true;
             Gamemodes.Multiplayer = false;
             Hide();
-            var game = new Game();
+            var game = new Game(currID, currName);
             game.ShowDialog();
             Show();
         }
@@ -23,7 +26,7 @@ namespace Client
             Gamemodes.Singleplayer = false;
             Gamemodes.Multiplayer = true;
             Hide();
-            var game = new Game();
+            var game = new Game(currID, currName);
             game.ShowDialog();
             Show();
         }
