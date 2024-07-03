@@ -562,6 +562,12 @@ namespace Client
                     break;
             }
         }
+
+        private void redPlayerStatusBox_richtextbox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private async Task<int> MoveTileByTile(int from, int to)
         {
             if (to < 40)
@@ -774,7 +780,9 @@ namespace Client
                 {
                     if (Players[i].Loser) count++;
                     if (Players[CurrentPlayerId].Loser || count < 1) continue;
-                    currentPlayersTurn_textbox.Text = "You won!";
+
+                    UpdateUI(() => currentPlayersTurn_textbox.Text = "You won!");
+
                     switch (CurrentPlayerId)
                     {
                         case 0:
@@ -785,7 +793,9 @@ namespace Client
                             break;
                     }
                 }
-                currentPositionInfo_richtextbox.Text = string.Empty;
+
+                UpdateUI(() => currentPositionInfo_richtextbox.Text = string.Empty);
+
                 var turnLogString = string.Empty;
                 switch (CurrentPlayerId)
                 {
@@ -809,34 +819,45 @@ namespace Client
                     }
                 if (turnLogString.Last() is '~') turnLogString += "NULL";
                 turnLogString += '~' + Players[CurrentPlayerId].Loser.ToString();
+
                 if (CurrentPlayerId is 0)
                 {
-                    currentPlayersTurn_textbox.Text = "Blue player is making his turn right now, wait. ";
+                    UpdateUI(() => currentPlayersTurn_textbox.Text = "Blue player is making his turn right now, wait.");
                     Stream.Write(Encoding.Unicode.GetBytes(turnLogString), 0, Encoding.Unicode.GetBytes(turnLogString).Length);
                 }
                 else
                 {
-                    currentPlayersTurn_textbox.Text = "Red player is making his turn right now, wait. ";
+                    UpdateUI(() => currentPlayersTurn_textbox.Text = "Red player is making his turn right now, wait.");
                     Stream.Write(Encoding.Unicode.GetBytes(turnLogString), 0, Encoding.Unicode.GetBytes(turnLogString).Length);
                 }
-                throwDiceBtn.Enabled = false;
-                buyBtn.Enabled = false;
-                endTurnBtn.Enabled = false;
+
+                UpdateUI(() =>
+                {
+                    throwDiceBtn.Enabled = false;
+                    buyBtn.Enabled = false;
+                    endTurnBtn.Enabled = false;
+                });
             }
+
             if (Gamemodes.Singleplayer)
             {
                 CurrentPlayerId = CurrentPlayerId is 0 ? 1 : 0;
                 switch (CurrentPlayerId)
                 {
                     case 0:
-                        currentPlayersTurn_textbox.Text = "Red player's turn. ";
+                        UpdateUI(() => currentPlayersTurn_textbox.Text = "Red player's turn.");
                         break;
                     case 1:
-                        currentPlayersTurn_textbox.Text = "Blue player's turn. ";
+                        UpdateUI(() => currentPlayersTurn_textbox.Text = "Blue player's turn.");
                         break;
                 }
-                throwDiceBtn.Enabled = true;
-                buyBtn.Enabled = false;
+
+                UpdateUI(() =>
+                {
+                    throwDiceBtn.Enabled = true;
+                    buyBtn.Enabled = false;
+                });
+
                 if (Players[CurrentPlayerId].InJail)
                 {
                     CurrentPosition = 10;
@@ -844,13 +865,16 @@ namespace Client
                     Players[CurrentPlayerId].Position = CurrentPosition;
                     InJail(CurrentPlayerId);
                 }
+
                 if (Players[CurrentPlayerId].Loser || Players[CurrentPlayerId].Balance <= 0) Lose();
                 var count = 0;
                 for (var i = 0; i < 2; i++)
                 {
                     if (Players[i].Loser) count++;
                     if (Players[CurrentPlayerId].Loser || count < 1) continue;
-                    currentPlayersTurn_textbox.Text = "You won!";
+
+                    UpdateUI(() => currentPlayersTurn_textbox.Text = "You won!");
+
                     switch (CurrentPlayerId)
                     {
                         case 0:
@@ -861,7 +885,19 @@ namespace Client
                             break;
                     }
                 }
-                currentPositionInfo_richtextbox.Text = string.Empty;
+
+                UpdateUI(() => currentPositionInfo_richtextbox.Text = string.Empty);
+            }
+        }
+        private void UpdateUI(Action action)
+        {
+            if (InvokeRequired)
+            {
+                Invoke(action);
+            }
+            else
+            {
+                action();
             }
         }
     }

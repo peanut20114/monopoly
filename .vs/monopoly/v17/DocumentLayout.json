@@ -3,7 +3,43 @@
   "WorkspaceRootPath": "D:\\UIT\\HK4_2023-2024\\LapTrinhMang\\project\\monopoly-master\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1836D6D0-367C-4169-BD41-60F6D92D0B50}|Client\\Client.csproj|d:\\uit\\hk4_2023-2024\\laptrinhmang\\project\\monopoly-master\\client\\changepassword.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{1836D6D0-367C-4169-BD41-60F6D92D0B50}|Client\\Client.csproj|d:\\uit\\hk4_2023-2024\\laptrinhmang\\project\\monopoly-master\\client\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1836D6D0-367C-4169-BD41-60F6D92D0B50}|Client\\Client.csproj|solutionrelative:client\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1836D6D0-367C-4169-BD41-60F6D92D0B50}|Client\\Client.csproj|d:\\uit\\hk4_2023-2024\\laptrinhmang\\project\\monopoly-master\\client\\event.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1836D6D0-367C-4169-BD41-60F6D92D0B50}|Client\\Client.csproj|solutionrelative:client\\event.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1836D6D0-367C-4169-BD41-60F6D92D0B50}|Client\\Client.csproj|D:\\UIT\\HK4_2023-2024\\LapTrinhMang\\project\\monopoly-master\\client\\event.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{1836D6D0-367C-4169-BD41-60F6D92D0B50}|Client\\Client.csproj|solutionrelative:client\\event.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1836D6D0-367C-4169-BD41-60F6D92D0B50}|Client\\Client.csproj|D:\\UIT\\HK4_2023-2024\\LapTrinhMang\\project\\monopoly-master\\client\\editprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{1836D6D0-367C-4169-BD41-60F6D92D0B50}|Client\\Client.csproj|solutionrelative:client\\editprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1836D6D0-367C-4169-BD41-60F6D92D0B50}|Client\\Client.csproj|D:\\UIT\\HK4_2023-2024\\LapTrinhMang\\project\\monopoly-master\\client\\connection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{1836D6D0-367C-4169-BD41-60F6D92D0B50}|Client\\Client.csproj|solutionrelative:client\\connection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1836D6D0-367C-4169-BD41-60F6D92D0B50}|Client\\Client.csproj|D:\\UIT\\HK4_2023-2024\\LapTrinhMang\\project\\monopoly-master\\client\\forgotpassword.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{1836D6D0-367C-4169-BD41-60F6D92D0B50}|Client\\Client.csproj|solutionrelative:client\\forgotpassword.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1836D6D0-367C-4169-BD41-60F6D92D0B50}|Client\\Client.csproj|D:\\UIT\\HK4_2023-2024\\LapTrinhMang\\project\\monopoly-master\\client\\account.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{1836D6D0-367C-4169-BD41-60F6D92D0B50}|Client\\Client.csproj|solutionrelative:client\\account.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1836D6D0-367C-4169-BD41-60F6D92D0B50}|Client\\Client.csproj|D:\\UIT\\HK4_2023-2024\\LapTrinhMang\\project\\monopoly-master\\client\\changepassword.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{1836D6D0-367C-4169-BD41-60F6D92D0B50}|Client\\Client.csproj|solutionrelative:client\\changepassword.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1836D6D0-367C-4169-BD41-60F6D92D0B50}|Client\\Client.csproj|D:\\UIT\\HK4_2023-2024\\LapTrinhMang\\project\\monopoly-master\\client\\friends.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{1836D6D0-367C-4169-BD41-60F6D92D0B50}|Client\\Client.csproj|solutionrelative:client\\friends.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1836D6D0-367C-4169-BD41-60F6D92D0B50}|Client\\Client.csproj|D:\\UIT\\HK4_2023-2024\\LapTrinhMang\\project\\monopoly-master\\client\\changepassword.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1836D6D0-367C-4169-BD41-60F6D92D0B50}|Client\\Client.csproj|solutionrelative:client\\changepassword.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -11,20 +47,8 @@
       "RelativeMoniker": "D:0:0:{1836D6D0-367C-4169-BD41-60F6D92D0B50}|Client\\Client.csproj|solutionrelative:client\\editprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1836D6D0-367C-4169-BD41-60F6D92D0B50}|Client\\Client.csproj|D:\\UIT\\HK4_2023-2024\\LapTrinhMang\\project\\monopoly-master\\client\\profile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{1836D6D0-367C-4169-BD41-60F6D92D0B50}|Client\\Client.csproj|solutionrelative:client\\profile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{1836D6D0-367C-4169-BD41-60F6D92D0B50}|Client\\Client.csproj|D:\\UIT\\HK4_2023-2024\\LapTrinhMang\\project\\monopoly-master\\client\\profile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1836D6D0-367C-4169-BD41-60F6D92D0B50}|Client\\Client.csproj|solutionrelative:client\\profile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1836D6D0-367C-4169-BD41-60F6D92D0B50}|Client\\Client.csproj|D:\\UIT\\HK4_2023-2024\\LapTrinhMang\\project\\monopoly-master\\client\\editprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{1836D6D0-367C-4169-BD41-60F6D92D0B50}|Client\\Client.csproj|solutionrelative:client\\editprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1836D6D0-367C-4169-BD41-60F6D92D0B50}|Client\\Client.csproj|D:\\UIT\\HK4_2023-2024\\LapTrinhMang\\project\\monopoly-master\\client\\changepassword.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{1836D6D0-367C-4169-BD41-60F6D92D0B50}|Client\\Client.csproj|solutionrelative:client\\changepassword.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,7 +58,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -54,7 +78,123 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Event.cs",
+              "DocumentMoniker": "D:\\UIT\\HK4_2023-2024\\LapTrinhMang\\project\\monopoly-master\\Client\\Event.cs",
+              "RelativeDocumentMoniker": "Client\\Event.cs",
+              "ToolTip": "D:\\UIT\\HK4_2023-2024\\LapTrinhMang\\project\\monopoly-master\\Client\\Event.cs",
+              "RelativeToolTip": "Client\\Event.cs",
+              "ViewState": "AQIAADsAAAAAAAAAAAAwwFUAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-03T09:13:51.445Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Game.cs",
+              "DocumentMoniker": "D:\\UIT\\HK4_2023-2024\\LapTrinhMang\\project\\monopoly-master\\Client\\Game.cs",
+              "RelativeDocumentMoniker": "Client\\Game.cs",
+              "ToolTip": "D:\\UIT\\HK4_2023-2024\\LapTrinhMang\\project\\monopoly-master\\Client\\Game.cs",
+              "RelativeToolTip": "Client\\Game.cs",
+              "ViewState": "AQIAANQAAAAAAAAAAAAvwOYAAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-03T08:20:39.89Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Event.cs [Design]",
+              "DocumentMoniker": "D:\\UIT\\HK4_2023-2024\\LapTrinhMang\\project\\monopoly-master\\Client\\Event.cs",
+              "RelativeDocumentMoniker": "Client\\Event.cs",
+              "ToolTip": "D:\\UIT\\HK4_2023-2024\\LapTrinhMang\\project\\monopoly-master\\Client\\Event.cs [Design]",
+              "RelativeToolTip": "Client\\Event.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-03T08:18:27.216Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Connection.cs [Design]",
+              "DocumentMoniker": "D:\\UIT\\HK4_2023-2024\\LapTrinhMang\\project\\monopoly-master\\Client\\Connection.cs",
+              "RelativeDocumentMoniker": "Client\\Connection.cs",
+              "ToolTip": "D:\\UIT\\HK4_2023-2024\\LapTrinhMang\\project\\monopoly-master\\Client\\Connection.cs [Design]",
+              "RelativeToolTip": "Client\\Connection.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-03T08:18:28.265Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ForgotPassword.cs [Design]",
+              "DocumentMoniker": "D:\\UIT\\HK4_2023-2024\\LapTrinhMang\\project\\monopoly-master\\Client\\ForgotPassword.cs",
+              "RelativeDocumentMoniker": "Client\\ForgotPassword.cs",
+              "ToolTip": "D:\\UIT\\HK4_2023-2024\\LapTrinhMang\\project\\monopoly-master\\Client\\ForgotPassword.cs [Design]",
+              "RelativeToolTip": "Client\\ForgotPassword.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-03T08:18:26.384Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Account.cs [Design]",
+              "DocumentMoniker": "D:\\UIT\\HK4_2023-2024\\LapTrinhMang\\project\\monopoly-master\\Client\\Account.cs",
+              "RelativeDocumentMoniker": "Client\\Account.cs",
+              "ToolTip": "D:\\UIT\\HK4_2023-2024\\LapTrinhMang\\project\\monopoly-master\\Client\\Account.cs [Design]",
+              "RelativeToolTip": "Client\\Account.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-03T08:18:24.263Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Friends.cs [Design]",
+              "DocumentMoniker": "D:\\UIT\\HK4_2023-2024\\LapTrinhMang\\project\\monopoly-master\\Client\\Friends.cs",
+              "RelativeDocumentMoniker": "Client\\Friends.cs",
+              "ToolTip": "D:\\UIT\\HK4_2023-2024\\LapTrinhMang\\project\\monopoly-master\\Client\\Friends.cs [Design]",
+              "RelativeToolTip": "Client\\Friends.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-03T08:18:21.372Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "EditProfile.cs [Design]",
+              "DocumentMoniker": "D:\\UIT\\HK4_2023-2024\\LapTrinhMang\\project\\monopoly-master\\Client\\EditProfile.cs",
+              "RelativeDocumentMoniker": "Client\\EditProfile.cs",
+              "ToolTip": "D:\\UIT\\HK4_2023-2024\\LapTrinhMang\\project\\monopoly-master\\Client\\EditProfile.cs [Design]",
+              "RelativeToolTip": "Client\\EditProfile.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-04T13:09:26.972Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ChangePassword.cs",
+              "DocumentMoniker": "D:\\UIT\\HK4_2023-2024\\LapTrinhMang\\project\\monopoly-master\\Client\\ChangePassword.cs",
+              "RelativeDocumentMoniker": "Client\\ChangePassword.cs",
+              "ToolTip": "D:\\UIT\\HK4_2023-2024\\LapTrinhMang\\project\\monopoly-master\\Client\\ChangePassword.cs",
+              "RelativeToolTip": "Client\\ChangePassword.cs",
+              "ViewState": "AQIAABwAAAAAAAAAAAAQwDMAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-04T13:55:48.045Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ChangePassword.cs [Design]",
+              "DocumentMoniker": "D:\\UIT\\HK4_2023-2024\\LapTrinhMang\\project\\monopoly-master\\Client\\ChangePassword.cs",
+              "RelativeDocumentMoniker": "Client\\ChangePassword.cs",
+              "ToolTip": "D:\\UIT\\HK4_2023-2024\\LapTrinhMang\\project\\monopoly-master\\Client\\ChangePassword.cs [Design]",
+              "RelativeToolTip": "Client\\ChangePassword.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-04T13:55:45.586Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "Profile.cs",
               "DocumentMoniker": "D:\\UIT\\HK4_2023-2024\\LapTrinhMang\\project\\monopoly-master\\Client\\Profile.cs",
               "RelativeDocumentMoniker": "Client\\Profile.cs",
@@ -66,31 +206,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Profile.cs [Design]",
-              "DocumentMoniker": "D:\\UIT\\HK4_2023-2024\\LapTrinhMang\\project\\monopoly-master\\Client\\Profile.cs",
-              "RelativeDocumentMoniker": "Client\\Profile.cs",
-              "ToolTip": "D:\\Code\\dotNET\\monopoly\\Client\\Profile.cs [Design]",
-              "RelativeToolTip": "..\\..\\..\\..\\..\\Code\\dotNET\\monopoly\\Client\\Profile.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-04T13:55:59.374Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ChangePassword.cs",
-              "DocumentMoniker": "D:\\UIT\\HK4_2023-2024\\LapTrinhMang\\project\\monopoly-master\\Client\\ChangePassword.cs",
-              "RelativeDocumentMoniker": "Client\\ChangePassword.cs",
-              "ToolTip": "D:\\UIT\\HK4_2023-2024\\LapTrinhMang\\project\\monopoly-master\\Client\\ChangePassword.cs",
-              "RelativeToolTip": "Client\\ChangePassword.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAAKAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-04T13:55:48.045Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 10,
               "Title": "EditProfile.cs",
               "DocumentMoniker": "D:\\UIT\\HK4_2023-2024\\LapTrinhMang\\project\\monopoly-master\\Client\\EditProfile.cs",
               "RelativeDocumentMoniker": "Client\\EditProfile.cs",
@@ -99,28 +215,6 @@
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAGEAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-04T13:51:26.6Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "EditProfile.cs [Design]",
-              "DocumentMoniker": "D:\\UIT\\HK4_2023-2024\\LapTrinhMang\\project\\monopoly-master\\Client\\EditProfile.cs",
-              "RelativeDocumentMoniker": "Client\\EditProfile.cs",
-              "ToolTip": "D:\\Code\\dotNET\\monopoly\\Client\\EditProfile.cs [Design]",
-              "RelativeToolTip": "..\\..\\..\\..\\..\\Code\\dotNET\\monopoly\\Client\\EditProfile.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-04T13:09:26.972Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ChangePassword.cs [Design]",
-              "DocumentMoniker": "D:\\UIT\\HK4_2023-2024\\LapTrinhMang\\project\\monopoly-master\\Client\\ChangePassword.cs",
-              "RelativeDocumentMoniker": "Client\\ChangePassword.cs",
-              "ToolTip": "D:\\UIT\\HK4_2023-2024\\LapTrinhMang\\project\\monopoly-master\\Client\\ChangePassword.cs [Design]",
-              "RelativeToolTip": "Client\\ChangePassword.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-04T13:55:45.586Z"
             }
           ]
         }
