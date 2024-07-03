@@ -1,5 +1,6 @@
 {
   "Version": 1,
+<<<<<<< HEAD
   "WorkspaceRootPath": "D:\\Code\\BasicNetworkPrograming\\monopoly\\",
   "Documents": [
     {
@@ -21,6 +22,17 @@
     {
       "AbsoluteMoniker": "D:0:0:{A5D85AE0-F679-4E5A-A185-D56AB2E483C7}|Server\\Server.csproj|D:\\Code\\BasicNetworkPrograming\\monopoly\\server\\clientobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A5D85AE0-F679-4E5A-A185-D56AB2E483C7}|Server\\Server.csproj|solutionrelative:server\\clientobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+=======
+  "WorkspaceRootPath": "D:\\UIT\\LapTrinhMang\\monopoly\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{1836D6D0-367C-4169-BD41-60F6D92D0B50}|Client\\Client.csproj|d:\\uit\\laptrinhmang\\monopoly\\client\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1836D6D0-367C-4169-BD41-60F6D92D0B50}|Client\\Client.csproj|solutionrelative:client\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1836D6D0-367C-4169-BD41-60F6D92D0B50}|Client\\Client.csproj|D:\\UIT\\LapTrinhMang\\monopoly\\client\\profile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1836D6D0-367C-4169-BD41-60F6D92D0B50}|Client\\Client.csproj|solutionrelative:client\\profile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+>>>>>>> 2c6eb15983bdef7ba3380f466e5654aa8c433c07
     }
   ],
   "DocumentGroupContainers": [
@@ -30,6 +42,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
+<<<<<<< HEAD
           "SelectedChildIndex": 3,
           "Children": [
             {
@@ -80,10 +93,59 @@
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-03T13:18:27.21Z",
               "EditorCaption": " [Design]"
+=======
+          "SelectedChildIndex": 8,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:131:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Game.cs",
+              "DocumentMoniker": "D:\\UIT\\LapTrinhMang\\monopoly\\Client\\Game.cs",
+              "RelativeDocumentMoniker": "Client\\Game.cs",
+              "ToolTip": "D:\\UIT\\LapTrinhMang\\monopoly\\Client\\Game.cs",
+              "RelativeToolTip": "Client\\Game.cs",
+              "ViewState": "AQIAAHoBAAAAAAAAAAAqwGMBAAAqAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-03T08:20:39.89Z",
+              "EditorCaption": ""
+>>>>>>> 2c6eb15983bdef7ba3380f466e5654aa8c433c07
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+<<<<<<< HEAD
               "Title": "Game.cs",
               "DocumentMoniker": "D:\\Code\\BasicNetworkPrograming\\monopoly\\Client\\Game.cs",
               "RelativeDocumentMoniker": "Client\\Game.cs",
@@ -93,6 +155,16 @@
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-03T09:59:05.827Z",
               "EditorCaption": ""
+=======
+              "Title": "Profile.cs",
+              "DocumentMoniker": "D:\\UIT\\LapTrinhMang\\monopoly\\Client\\Profile.cs",
+              "RelativeDocumentMoniker": "Client\\Profile.cs",
+              "ToolTip": "D:\\UIT\\LapTrinhMang\\monopoly\\Client\\Profile.cs",
+              "RelativeToolTip": "Client\\Profile.cs",
+              "ViewState": "AQIAACEAAAAAAAAAAAAowDQAAAAZAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-04T13:56:00.662Z"
+>>>>>>> 2c6eb15983bdef7ba3380f466e5654aa8c433c07
             }
           ]
         }

@@ -26,12 +26,14 @@ namespace Client
         {
             Login login = new Login();
             login.Show();
+            this.Hide();
         }
 
         private void RegisterBtn_Click(object sender, EventArgs e)
         {
             Register register = new Register();
             register.Show();
+            this.Hide();
         }
     }
 }

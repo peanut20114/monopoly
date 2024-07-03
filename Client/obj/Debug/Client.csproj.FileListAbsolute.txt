@@ -66,6 +66,43 @@ D:\Code\dotNET\monopoly\Client\obj\Debug\Client.csproj.Up2Date
 D:\Code\dotNET\monopoly\Client\obj\Debug\Client.exe
 D:\Code\dotNET\monopoly\Client\obj\Debug\Client.pdb
 D:\Code\dotNET\monopoly\Client\obj\Debug\Client.EditProfile.resources
+<<<<<<< HEAD
+D:\UIT\HK4_2023-2024\LapTrinhMang\project\monopoly-master\Client\bin\Debug\Client.exe.config
+D:\UIT\HK4_2023-2024\LapTrinhMang\project\monopoly-master\Client\bin\Debug\Client.exe
+D:\UIT\HK4_2023-2024\LapTrinhMang\project\monopoly-master\Client\bin\Debug\Client.pdb
+D:\UIT\HK4_2023-2024\LapTrinhMang\project\monopoly-master\Client\bin\Debug\System.Buffers.dll
+D:\UIT\HK4_2023-2024\LapTrinhMang\project\monopoly-master\Client\bin\Debug\System.Collections.Immutable.dll
+D:\UIT\HK4_2023-2024\LapTrinhMang\project\monopoly-master\Client\bin\Debug\Microsoft.Threading.Tasks.xml
+D:\UIT\HK4_2023-2024\LapTrinhMang\project\monopoly-master\Client\bin\Debug\Microsoft.Threading.Tasks.Extensions.xml
+D:\UIT\HK4_2023-2024\LapTrinhMang\project\monopoly-master\Client\bin\Debug\Microsoft.Threading.Tasks.Extensions.Desktop.xml
+D:\UIT\HK4_2023-2024\LapTrinhMang\project\monopoly-master\Client\bin\Debug\Newtonsoft.Json.xml
+D:\UIT\HK4_2023-2024\LapTrinhMang\project\monopoly-master\Client\bin\Debug\RestSharp.xml
+D:\UIT\HK4_2023-2024\LapTrinhMang\project\monopoly-master\Client\bin\Debug\System.Buffers.xml
+D:\UIT\HK4_2023-2024\LapTrinhMang\project\monopoly-master\Client\bin\Debug\System.Collections.Immutable.xml
+D:\UIT\HK4_2023-2024\LapTrinhMang\project\monopoly-master\Client\bin\Debug\System.Net.Http.Extensions.xml
+D:\UIT\HK4_2023-2024\LapTrinhMang\project\monopoly-master\Client\bin\Debug\System.Net.Http.Primitives.xml
+D:\UIT\HK4_2023-2024\LapTrinhMang\project\monopoly-master\Client\obj\Debug\Client.csproj.AssemblyReference.cache
+D:\UIT\HK4_2023-2024\LapTrinhMang\project\monopoly-master\Client\obj\Debug\Client.ChangePassword.resources
+D:\UIT\HK4_2023-2024\LapTrinhMang\project\monopoly-master\Client\obj\Debug\Client.Connection.resources
+D:\UIT\HK4_2023-2024\LapTrinhMang\project\monopoly-master\Client\obj\Debug\Client.EditProfile.resources
+D:\UIT\HK4_2023-2024\LapTrinhMang\project\monopoly-master\Client\obj\Debug\Client.Friends.resources
+D:\UIT\HK4_2023-2024\LapTrinhMang\project\monopoly-master\Client\obj\Debug\Client.Game.resources
+D:\UIT\HK4_2023-2024\LapTrinhMang\project\monopoly-master\Client\obj\Debug\Client.ColorChoosing.resources
+D:\UIT\HK4_2023-2024\LapTrinhMang\project\monopoly-master\Client\obj\Debug\Client.Account.resources
+D:\UIT\HK4_2023-2024\LapTrinhMang\project\monopoly-master\Client\obj\Debug\Client.History.resources
+D:\UIT\HK4_2023-2024\LapTrinhMang\project\monopoly-master\Client\obj\Debug\Client.HomePage.resources
+D:\UIT\HK4_2023-2024\LapTrinhMang\project\monopoly-master\Client\obj\Debug\Client.Login.resources
+D:\UIT\HK4_2023-2024\LapTrinhMang\project\monopoly-master\Client\obj\Debug\Client.MainMenu.resources
+D:\UIT\HK4_2023-2024\LapTrinhMang\project\monopoly-master\Client\obj\Debug\Client.Event.resources
+D:\UIT\HK4_2023-2024\LapTrinhMang\project\monopoly-master\Client\obj\Debug\Client.Profile.resources
+D:\UIT\HK4_2023-2024\LapTrinhMang\project\monopoly-master\Client\obj\Debug\Client.Properties.Resources.resources
+D:\UIT\HK4_2023-2024\LapTrinhMang\project\monopoly-master\Client\obj\Debug\Client.Register.resources
+D:\UIT\HK4_2023-2024\LapTrinhMang\project\monopoly-master\Client\obj\Debug\Client.csproj.GenerateResource.cache
+D:\UIT\HK4_2023-2024\LapTrinhMang\project\monopoly-master\Client\obj\Debug\Client.csproj.CoreCompileInputs.cache
+D:\UIT\HK4_2023-2024\LapTrinhMang\project\monopoly-master\Client\obj\Debug\Client.csproj.Up2Date
+D:\UIT\HK4_2023-2024\LapTrinhMang\project\monopoly-master\Client\obj\Debug\Client.exe
+D:\UIT\HK4_2023-2024\LapTrinhMang\project\monopoly-master\Client\obj\Debug\Client.pdb
+=======
 D:\UIT\LapTrinhMang\monopoly\Client\bin\Debug\Client.exe.config
 D:\UIT\LapTrinhMang\monopoly\Client\bin\Debug\Client.exe
 D:\UIT\LapTrinhMang\monopoly\Client\bin\Debug\Client.pdb
@@ -101,6 +138,7 @@ D:\UIT\LapTrinhMang\monopoly\Client\obj\Debug\Client.csproj.CoreCompileInputs.ca
 D:\UIT\LapTrinhMang\monopoly\Client\obj\Debug\Client.csproj.Up2Date
 D:\UIT\LapTrinhMang\monopoly\Client\obj\Debug\Client.exe
 D:\UIT\LapTrinhMang\monopoly\Client\obj\Debug\Client.pdb
+<<<<<<< HEAD
 D:\Code\BasicNetworkPrograming\monopoly\Client\bin\Debug\Client.exe.config
 D:\Code\BasicNetworkPrograming\monopoly\Client\bin\Debug\Client.exe
 D:\Code\BasicNetworkPrograming\monopoly\Client\bin\Debug\Client.pdb
@@ -145,3 +183,6 @@ D:\Code\BasicNetworkPrograming\monopoly\Client\bin\Debug\RestSharp.dll
 D:\Code\BasicNetworkPrograming\monopoly\Client\bin\Debug\System.Net.Http.Extensions.dll
 D:\Code\BasicNetworkPrograming\monopoly\Client\bin\Debug\System.Net.Http.Primitives.dll
 D:\Code\BasicNetworkPrograming\monopoly\Client\obj\Debug\Client.csproj.App.config
+=======
+>>>>>>> 8bca2e7c0bbabdd6b3dca0b0e9dc47a0e69e26e0
+>>>>>>> 2c6eb15983bdef7ba3380f466e5654aa8c433c07
