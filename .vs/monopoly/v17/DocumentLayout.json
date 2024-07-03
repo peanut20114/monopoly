@@ -7,7 +7,7 @@
       "RelativeMoniker": "D:0:0:{1836D6D0-367C-4169-BD41-60F6D92D0B50}|Client\\Client.csproj|solutionrelative:client\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1836D6D0-367C-4169-BD41-60F6D92D0B50}|Client\\Client.csproj|d:\\uit\\hk4_2023-2024\\laptrinhmang\\project\\monopoly-master\\client\\event.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{1836D6D0-367C-4169-BD41-60F6D92D0B50}|Client\\Client.csproj|D:\\UIT\\HK4_2023-2024\\LapTrinhMang\\project\\monopoly-master\\client\\event.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1836D6D0-367C-4169-BD41-60F6D92D0B50}|Client\\Client.csproj|solutionrelative:client\\event.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -86,8 +86,7 @@
               "RelativeToolTip": "Client\\Event.cs",
               "ViewState": "AQIAADsAAAAAAAAAAAAwwFUAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-03T09:13:51.445Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-03T09:13:51.445Z"
             },
             {
               "$type": "Document",
@@ -97,7 +96,7 @@
               "RelativeDocumentMoniker": "Client\\Game.cs",
               "ToolTip": "D:\\UIT\\HK4_2023-2024\\LapTrinhMang\\project\\monopoly-master\\Client\\Game.cs",
               "RelativeToolTip": "Client\\Game.cs",
-              "ViewState": "AQIAANQAAAAAAAAAAAAvwOYAAAAaAAAA",
+              "ViewState": "AQIAAMYAAAAAAAAAAADwv9wAAAA2AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-03T08:20:39.89Z",
               "EditorCaption": ""
@@ -111,8 +110,7 @@
               "ToolTip": "D:\\UIT\\HK4_2023-2024\\LapTrinhMang\\project\\monopoly-master\\Client\\Event.cs [Design]",
               "RelativeToolTip": "Client\\Event.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-03T08:18:27.216Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2024-07-03T08:18:27.216Z"
             },
             {
               "$type": "Document",
