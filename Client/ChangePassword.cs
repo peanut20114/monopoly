@@ -12,6 +12,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+//This comment is for fun
 namespace Client
 {
     public partial class ChangePassword : Form
