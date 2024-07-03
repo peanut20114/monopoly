@@ -18,6 +18,32 @@ namespace Client
         private readonly Player[] Players = new Player[2];
         private readonly Property[] Properties = new Property[40];
         private readonly PictureBox[] Tile;
+
+        private void UpdateTextBox(string text)
+        {
+            if (currentPlayersTurn_textbox.InvokeRequired)
+            {
+                currentPlayersTurn_textbox.Invoke(new Action<string>(UpdateTextBox), text);
+            }
+            else
+            {
+                currentPlayersTurn_textbox.Text = text;
+            }
+        }
+
+        private void SetButtonEnabled(Button button, bool enabled)
+        {
+            if (button.InvokeRequired)
+            {
+                button.Invoke((MethodInvoker)delegate {
+                    button.Enabled = enabled;
+                });
+            }
+            else
+            {
+                button.Enabled = enabled;
+            }
+        }
         private class Property
         {
             public bool Buyable, Owned;
@@ -322,10 +348,12 @@ namespace Client
                                 switch (ConnectionOptions.PlayerName)
                                 {
                                     case "Red":
-                                        currentPlayersTurn_textbox.Text = "Throw dices to start the game";
-                                        throwDiceBtn.Enabled = true;
+                                        UpdateTextBox("Throw dices to start the game");
+                                        SetButtonEnabled(throwDiceBtn, true);
+                                        //throwDiceBtn.Enabled = true;
                                         buyBtn.Enabled = false;
-                                        endTurnBtn.Enabled = true;
+                                        SetButtonEnabled(endTurnBtn, true);
+                                        //endTurnBtn.Enabled = true;
                                         break;
                                     case "Blue":
                                         currentPlayersTurn_textbox.Text = "Red player is making his turn right now, wait";
