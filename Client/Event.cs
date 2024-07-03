@@ -22,6 +22,8 @@ namespace Client
         {
             listView1.View = View.Details;
             listView1.Scrollable = false;
+            listView1.FullRowSelect = true;
+
 
             // Add columns to the ListView.
             listView1.Columns.Add("Event", 210, HorizontalAlignment.Center);
@@ -47,13 +49,7 @@ namespace Client
 
                 Random random = new Random();
                 int randomNumber = random.Next(0, 2);
-                string eventStatus;
-                if (randomNumber == 0)
-                    eventStatus = "Finished";
-                else
-                {
-                    eventStatus = "Ongoing";
-                }
+                string eventStatus = (randomNumber == 0) ? "Finished" : "Ongoing";
                 ListViewItem.ListViewSubItem statusSubItem = new ListViewItem.ListViewSubItem(item, eventStatus);
                 // Change the color based on the status.
                 if (eventStatus == "Finished")
