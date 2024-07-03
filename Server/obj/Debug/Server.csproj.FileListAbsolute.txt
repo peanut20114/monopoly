@@ -44,3 +44,10 @@ D:\UIT\LapTrinhMang\monopoly\Server\obj\Debug\Server.csproj.CoreCompileInputs.ca
 D:\UIT\LapTrinhMang\monopoly\Server\obj\Debug\Server.csproj.Up2Date
 D:\UIT\LapTrinhMang\monopoly\Server\obj\Debug\Server.exe
 D:\UIT\LapTrinhMang\monopoly\Server\obj\Debug\Server.pdb
+D:\Code\BasicNetworkPrograming\monopoly\Server\obj\Debug\Server.csproj.AssemblyReference.cache
+D:\Code\BasicNetworkPrograming\monopoly\Server\obj\Debug\Server.ServerForm.resources
+D:\Code\BasicNetworkPrograming\monopoly\Server\obj\Debug\Server.Properties.Resources.resources
+D:\Code\BasicNetworkPrograming\monopoly\Server\obj\Debug\Server.csproj.GenerateResource.cache
+D:\Code\BasicNetworkPrograming\monopoly\Server\obj\Debug\Server.csproj.CoreCompileInputs.cache
+D:\Code\BasicNetworkPrograming\monopoly\Server\obj\Debug\Server.exe
+D:\Code\BasicNetworkPrograming\monopoly\Server\obj\Debug\Server.pdb

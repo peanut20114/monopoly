@@ -9,6 +9,7 @@ namespace Client
         public static string UserID;
         public static string UserName;
         public static int UserRank;
+        public static string SessionID;
         [STAThread]
         private static void Main()
         {
@@ -39,12 +40,11 @@ namespace Client
     }
     internal class Session
     {
-        public string[] user_id { get; set; }
-        public int result { get; set; }
-        public int module_play { get; set; }
-        public DateTime start_at { get; set; }
-        public DateTime end_at { get; set; }
-        public string winner {  get; set; }
+        public string redPawn { get; set; }
+        public string bluePawn { get; set; }
+        public int winner { get; set; } // 0 is Red, 1 is Blue
+        public string start_at { get; set; }
+        public string end_at { get; set; }
     }
     internal static class Gamemodes
     {

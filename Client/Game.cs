@@ -1,4 +1,7 @@
-﻿using System;
+﻿using FireSharp.Config;
+using FireSharp.Interfaces;
+using FireSharp.Response;
+using System;
 using System.Drawing;
 using System.Linq;
 using System.Net.Sockets;
@@ -11,6 +14,12 @@ namespace Client
 {
     public partial class Game : Form
     {
+        IFirebaseConfig config = new FirebaseConfig
+        {
+            AuthSecret = "RupkJmOpqVD7u65mZo31WEtDRqKWpkN2Oj6UtbNT",
+            BasePath = "https://monopoly-8058b-default-rtdb.asia-southeast1.firebasedatabase.app/"
+        };
+        IFirebaseClient FBclient;
         private static TcpClient Client = new TcpClient();
         private static NetworkStream Stream;
         private bool RedConnected, BlueConnected;
@@ -36,11 +45,9 @@ namespace Client
             public int EndPosition, Balance, Jail;
             public readonly int[] PropertiesOwned = new int[40];
         }
-        public Game(string userID, string Username)
+        public Game()
         {
             InitializeComponent();
-            string currID = userID;
-            string currName = Username;
             if (Gamemodes.Multiplayer)
                 try
                 {
@@ -48,7 +55,7 @@ namespace Client
                     connection.ShowDialog();
                     if (connection.DialogResult is DialogResult.Cancel)
                     {
-                        var mainMenu = new MainMenu(currID, currName);
+                        var mainMenu = new MainMenu();
                         mainMenu.ShowDialog();
                         Disconnect();
                     }
@@ -79,7 +86,7 @@ namespace Client
                     colorChoosing.ShowDialog();
                     if (colorChoosing.DialogResult is DialogResult.Cancel)
                     {
-                        var mainMenu = new MainMenu(currID, currName);
+                        var mainMenu = new MainMenu();
                         mainMenu.ShowDialog();
                         Disconnect();
                     }
@@ -359,6 +366,11 @@ namespace Client
                                 ConnectionOptions.NameBlueIsTaken = true;
                                 break;
                             }
+                        default:
+                            {
+                                Program.SessionID = message;
+                                break;
+                            }
                     }
                     if (message.Contains("Turn results"))
                     {
@@ -523,21 +535,32 @@ namespace Client
                     Disconnect();
                 }
         }
-        private void Lose()
+        private async void Lose()
         {
             Players[CurrentPlayerId].Loser = true;
             throwDiceBtn.Enabled = false;
             buyBtn.Enabled = false;
             endTurnBtn.Enabled = false;
+
+            FBclient = new FireSharp.FirebaseClient(config);
+            FirebaseResponse res = await FBclient.GetAsync("SESSION/" + Program.SessionID);
+            Session data = res.ResultAs<Session>();
+
             switch (CurrentPlayerId)
             {
                 case 0 when Players[0].Loser:
                     currentPlayersTurn_textbox.Text = "Red player has lost!";
+                    data.winner = 1; // Update winner to Blue Pawn
                     break;
                 case 1 when Players[1].Loser:
                     currentPlayersTurn_textbox.Text = "Blue player has lost!";
+                    data.winner = 0; // Update winner to Red Pawn
                     break;
             }
+
+            // Update the data in Firebase
+            SetResponse updateResponse = await FBclient.SetAsync("SESSION/" + Program.SessionID, data);
+            Session updatedData = updateResponse.ResultAs<Session>();
         }
         private static void Disconnect()
         {
@@ -562,6 +585,7 @@ namespace Client
                     break;
             }
         }
+
         private async Task<int> MoveTileByTile(int from, int to)
         {
             if (to < 40)

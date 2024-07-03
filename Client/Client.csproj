@@ -111,12 +111,6 @@
     <Compile Include="Friends.Designer.cs">
       <DependentUpon>Friends.cs</DependentUpon>
     </Compile>
-    <Compile Include="History.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="History.Designer.cs">
-      <DependentUpon>History.cs</DependentUpon>
-    </Compile>
     <Compile Include="HomePage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -195,9 +189,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Account.resx">
       <DependentUpon>Account.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="History.resx">
-      <DependentUpon>History.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HomePage.resx">
       <DependentUpon>HomePage.cs</DependentUpon>

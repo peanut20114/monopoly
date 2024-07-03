@@ -1,4 +1,8 @@
-﻿using System;
+﻿using FireSharp.Config;
+using FireSharp.Interfaces;
+using FireSharp.Response;
+using System;
+using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Windows.Forms;
@@ -7,6 +11,12 @@ namespace Server
 {
     public class ClientObject
     {
+        IFirebaseConfig config = new FirebaseConfig
+        {
+            AuthSecret = "RupkJmOpqVD7u65mZo31WEtDRqKWpkN2Oj6UtbNT",
+            BasePath = "https://monopoly-8058b-default-rtdb.asia-southeast1.firebasedatabase.app/"
+        };
+        IFirebaseClient FBclient;
         private readonly TcpClient Client;
         private readonly ServerObject server;
         private string userName;
@@ -19,7 +29,7 @@ namespace Server
         }
         protected internal string Id { get; }
         protected internal NetworkStream Stream { get; private set; }
-        public void Process()
+        public async void Process()
         {
             try
             {
@@ -30,82 +40,98 @@ namespace Server
                     switch (message)
                     {
                         case "Both players has connected":
+                        {
+                            server.SendMessageToEveryone(message, Id);
+                            Program.f.tbLog.Invoke((MethodInvoker)delegate
                             {
-                                server.SendMessageToEveryone(message, Id);
-                                Program.f.tbLog.Invoke((MethodInvoker)delegate
-                                {
-                                    Program.f.tbLog.Text += "[" + DateTime.Now + "] " + message + Environment.NewLine;
-                                });
-                                break;
-                            }
-                        case "Red":
-                            {
-                                Taken.Red = true;
-                                userName = message;
-                                Program.f.tbLog.Invoke((MethodInvoker)delegate
-                                {
-                                    Program.f.tbLog.Text += "[" + DateTime.Now + "] " + userName + " has connected" + Environment.NewLine;
-                                });
-                                server.SendMessageToOpponentClient(userName + " has connected", Id);
-                                break;
-                            }
-                        case "Blue":
-                            {
-                                Taken.Blue = true;
-                                userName = message;
-                                Program.f.tbLog.Invoke((MethodInvoker)delegate
-                                {
-                                    Program.f.tbLog.Text += "[" + DateTime.Now + "] " + userName + " has connected" + Environment.NewLine;
-                                });
-                                server.SendMessageToOpponentClient(userName + " has connected", Id);
-                                break;
-                            }
+                                Program.f.tbLog.Text += "[" + DateTime.Now + "] " + message + Environment.NewLine;
+                            });
+                            break;
+                        }
                         case "Someone has connected":
+                        {
+                            Program.f.tbLog.Invoke((MethodInvoker)delegate
                             {
-                                Program.f.tbLog.Invoke((MethodInvoker)delegate
-                                {
-                                    Program.f.tbLog.Text += "[" + DateTime.Now + "] " + message + Environment.NewLine;
-                                });
-                                if (Taken.Red) server.SendMessageToSender("Red pawn is already selected", Id);
-                                if (Taken.Blue) server.SendMessageToSender("Blue pawn is already selected", Id);
-                                break;
-                            }
+                                Program.f.tbLog.Text += "[" + DateTime.Now + "] " + message + Environment.NewLine;
+                            });
+                            if (Taken.Red) server.SendMessageToSender("Red pawn is already selected", Id);
+                            if (Taken.Blue) server.SendMessageToSender("Blue pawn is already selected", Id);
+                            break;
+                        }
                         case "Red pawn is already selected":
+                        {
+                            server.SendMessageToOpponentClient(message, Id);
+                            Program.f.tbLog.Invoke((MethodInvoker)delegate
                             {
-                                server.SendMessageToOpponentClient(message, Id);
-                                Program.f.tbLog.Invoke((MethodInvoker)delegate
-                                {
-                                    Program.f.tbLog.Text += "[" + DateTime.Now + "] " + message + Environment.NewLine;
-                                });
-                                break;
-                            }
+                                Program.f.tbLog.Text += "[" + DateTime.Now + "] " + message + Environment.NewLine;
+                            });
+                            break;
+                        }
                         case "Blue pawn is already selected":
+                        {
+                            server.SendMessageToOpponentClient(message, Id);
+                            Program.f.tbLog.Invoke((MethodInvoker)delegate
                             {
-                                server.SendMessageToOpponentClient(message, Id);
-                                Program.f.tbLog.Invoke((MethodInvoker)delegate
-                                {
-                                    Program.f.tbLog.Text += "[" + DateTime.Now + "] " + message + Environment.NewLine;
-                                });
-                                break;
-                            }
+                                Program.f.tbLog.Text += "[" + DateTime.Now + "] " + message + Environment.NewLine;
+                            });
+                            break;
+                        }
                         case "Red has left" when userName is "Red":
+                        {
+                            Program.f.tbLog.Invoke((MethodInvoker)delegate
                             {
-                                Program.f.tbLog.Invoke((MethodInvoker)delegate
-                                {
-                                    Program.f.tbLog.Text += "[" + DateTime.Now + "] " + message + Environment.NewLine;
-                                });
-                                server.RemoveConnection(this.Id);
-                                break;
-                            }
+                                Program.f.tbLog.Text += "[" + DateTime.Now + "] " + message + Environment.NewLine;
+                            });
+                            server.RemoveConnection(this.Id);
+                            break;
+                        }
                         case "Blue has left" when userName is "Blue":
+                        {
+                            Program.f.tbLog.Invoke((MethodInvoker)delegate
                             {
-                                Program.f.tbLog.Invoke((MethodInvoker)delegate
-                                {
-                                    Program.f.tbLog.Text += "[" + DateTime.Now + "] " + message + Environment.NewLine;
-                                });
-                                server.RemoveConnection(this.Id);
-                                break;
-                            }
+                                Program.f.tbLog.Text += "[" + DateTime.Now + "] " + message + Environment.NewLine;
+                            });
+                            server.RemoveConnection(this.Id);
+                            break;
+                        }
+                    }
+                    if (message.Contains("-Red"))
+                    {
+                        Taken.Red = true;
+                        // Update user id Red Pawn
+                        FBclient = new FireSharp.FirebaseClient(config);
+                        FirebaseResponse res = await FBclient.GetTaskAsync("SESSION/" + Program.sessionID);
+                        Session data = res.ResultAs<Session>();
+                        data.redPawn = message.Split('-')[0];
+                        // Update the data in Firebase
+                        SetResponse updateResponse = await FBclient.SetTaskAsync("SESSION/" + Program.sessionID, data);
+                        Session updatedData = updateResponse.ResultAs<Session>();
+                        // End updated
+                        userName = message.Split('-')[1];
+                        Program.f.tbLog.Invoke((MethodInvoker)delegate
+                        {
+                            Program.f.tbLog.Text += "[" + DateTime.Now + "] " + userName + " has connected" + Environment.NewLine;
+                        });
+                        server.SendMessageToOpponentClient(userName + " has connected", Id);
+                    }
+                    if (message.Contains("-Blue"))
+                    {
+                        Taken.Blue = true;
+                        // Update user id Blue Pawn
+                        FBclient = new FireSharp.FirebaseClient(config);
+                        FirebaseResponse res = await FBclient.GetTaskAsync("SESSION/" + Program.sessionID);
+                        Session data = res.ResultAs<Session>();
+                        data.bluePawn = message.Split('-')[0];
+                        // Update the data in Firebase
+                        SetResponse updateResponse = await FBclient.SetTaskAsync("SESSION/" + Program.sessionID, data);
+                        Session updatedData = updateResponse.ResultAs<Session>();
+                        // End updated
+                        userName = message.Split('-')[1];
+                        Program.f.tbLog.Invoke((MethodInvoker)delegate
+                        {
+                            Program.f.tbLog.Text += "[" + DateTime.Now + "] " + userName + " has connected" + Environment.NewLine;
+                        });
+                        server.SendMessageToOpponentClient(userName + " has connected", Id);
                     }
                     if (message.Contains("Red player's turn results"))
                     {
