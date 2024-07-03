@@ -17,6 +17,7 @@ namespace Client
 {
     public partial class HomePage : Form
     {
+        string currName, currID;
         IFirebaseConfig config = new FirebaseConfig
         {
             AuthSecret = "RupkJmOpqVD7u65mZo31WEtDRqKWpkN2Oj6UtbNT",
@@ -24,15 +25,17 @@ namespace Client
         };
 
         IFirebaseClient client;
-        public HomePage()
+        public HomePage(string userID, string userName)
         {
+            currName = userName;
+            currID = userID;
             client = new FireSharp.FirebaseClient(config);
             InitializeComponent();
         }
 
         private void btn_PlayGame_Click(object sender, EventArgs e)
         {
-            MainMenu menu = new MainMenu();
+            MainMenu menu = new MainMenu(currName, currID);
             menu.Show();
             this.Close();
         }
@@ -50,7 +53,7 @@ namespace Client
 
         private void btn_Friends_Click(object sender, EventArgs e)
         {
-            Friends form = new Friends();
+            Friends form = new Friends(currID);
             form.Show();
         }
 

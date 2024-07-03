@@ -35,13 +35,14 @@ namespace Client
             FirebaseResponse res = await client.GetAsync("USER/");
             dynamic IDs = res.ResultAs<dynamic>();
             bool LoginFlag = false;
-
+            string userID = null;
+            string userName = null;
             foreach (var id in IDs)
             {
-                string userID = id.Name;
+                userID = id.Name;
                 FirebaseResponse userRes = await client.GetAsync("USER/" + userID);
                 User userdata = userRes.ResultAs<User>();
-                string userName = userdata.username;
+                userName = userdata.username;
                 string userEmail = userdata.email;
                 string userPassword = userdata.password;
 
@@ -55,7 +56,7 @@ namespace Client
             }
             if (LoginFlag)
             {
-                HomePage menu = new HomePage();
+                HomePage menu = new HomePage(userID, userName);
                 menu.Show();
                 this.Close();
             }

@@ -36,9 +36,11 @@ namespace Client
             public int EndPosition, Balance, Jail;
             public readonly int[] PropertiesOwned = new int[40];
         }
-        public Game()
+        public Game(string userID, string Username)
         {
             InitializeComponent();
+            string currID = userID;
+            string currName = Username;
             if (Gamemodes.Multiplayer)
                 try
                 {
@@ -46,7 +48,7 @@ namespace Client
                     connection.ShowDialog();
                     if (connection.DialogResult is DialogResult.Cancel)
                     {
-                        var mainMenu = new MainMenu();
+                        var mainMenu = new MainMenu(currID, currName);
                         mainMenu.ShowDialog();
                         Disconnect();
                     }
@@ -77,7 +79,7 @@ namespace Client
                     colorChoosing.ShowDialog();
                     if (colorChoosing.DialogResult is DialogResult.Cancel)
                     {
-                        var mainMenu = new MainMenu();
+                        var mainMenu = new MainMenu(currID, currName);
                         mainMenu.ShowDialog();
                         Disconnect();
                     }

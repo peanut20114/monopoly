@@ -61,5 +61,10 @@ namespace Server
                 server?.CloseAndExit();
             }
         }
+
+        private void tbLog_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

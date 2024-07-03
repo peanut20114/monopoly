@@ -41,7 +41,7 @@ namespace Client
                 string sesionID = id.Name;
                 FirebaseResponse sessionRes = await client.GetAsync("SESSION/" + sesionID);
                 Session sessionData = sessionRes.ResultAs<Session>();
-                string userID = sessionData.user_id;
+                string userID = sessionData.user_id[id];
                 if (userID.ToString() == Program.UserID.ToString())
                 {
                     ListViewItem item = null;
@@ -67,6 +67,11 @@ namespace Client
                     listView1.Items.Add(item);
                 }
             }
+        }
+
+        private void richTextBox2_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
