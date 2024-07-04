@@ -1,4 +1,7 @@
-﻿using System;
+using FireSharp.Config;
+using FireSharp.Interfaces;
+using FireSharp.Response;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,13 +16,24 @@ namespace Client
 {
     public partial class Event : Form
     {
+        IFirebaseConfig config = new FirebaseConfig
+        {
+            AuthSecret = "RupkJmOpqVD7u65mZo31WEtDRqKWpkN2Oj6UtbNT",
+            BasePath = "https://monopoly-8058b-default-rtdb.asia-southeast1.firebasedatabase.app/"
+        };
+
+        IFirebaseClient client;
         public Event()
         {
+            client = new FireSharp.FirebaseClient(config);
             InitializeComponent();
             Load();
         }
-        private void Load()
+        private async void Load()
         {
+            int numWins = await getNumberOfWins(Program.UserID);
+            int numGames = await getNumberOfGames(Program.UserID);
+
             listView1.View = View.Details;
             listView1.Scrollable = false;
             listView1.FullRowSelect = true;
@@ -31,6 +45,7 @@ namespace Client
             listView1.Columns.Add("End At", 125, HorizontalAlignment.Center);
             listView1.Columns.Add("Status", 100, HorizontalAlignment.Center);
             string[] missions = { "Complete 1 Game", "Complete 2 Games", "Complete 3 Games", "Online 20 minutes", "Win 1 game", "Win 2 games", "Win 2 consecutive games" };
+            string[] eventStats = checkMissions(missions, numWins, numGames);
             for (int i = 0; i < 7; i++)
             {
                 // Create a new ListViewItem with the event name.
@@ -49,20 +64,21 @@ namespace Client
 
                 Random random = new Random();
                 int randomNumber = random.Next(0, 2);
-                string eventStatus = (randomNumber == 0) ? "Finished" : "Ongoing";
+                string eventStatus = eventStats[i];
+
                 ListViewItem.ListViewSubItem statusSubItem = new ListViewItem.ListViewSubItem(item, eventStatus);
                 // Change the color based on the status.
                 if (eventStatus == "Finished")
                 {
-                    statusSubItem.BackColor = Color.LightGreen; // Completed missions are highlighted in green.
+                    statusSubItem.ForeColor = Color.LightGreen; // Completed missions are highlighted in green.
                 }
                 else if (eventStatus == "Ongoing")
                 {
-                    statusSubItem.BackColor = Color.LightYellow; // Ongoing missions are highlighted in yellow.
+                    statusSubItem.ForeColor = Color.LightYellow; // Ongoing missions are highlighted in yellow.
                 }
                 else
                 {
-                    statusSubItem.BackColor = Color.LightCoral; // Future missions are highlighted in red.
+                    statusSubItem.ForeColor = Color.LightCoral; // Future missions are highlighted in red.
                 }
 
                 item.SubItems.Add(statusSubItem);
@@ -73,19 +89,7 @@ namespace Client
         }
         string GetEventStatus(DateTime startTime, DateTime endTime)
         {
-            DateTime now = DateTime.Now;
-            if (now < startTime)
-            {
-                return "Upcoming";
-            }
-            else if (now >= startTime && now <= endTime)
-            {
-                return "Ongoing";
-            }
-            else
-            {
-                return "Finished";
-            }
+            return "hello";
         }
 
         // Method to generate a random DateTime within a specified range.
@@ -96,5 +100,75 @@ namespace Client
             return start.AddDays(rnd.Next(range));
         }
         
+        public async Task<int> getNumberOfWins(string userID)
+        {
+            FirebaseResponse res = await client.GetAsync("SESSION/");
+            Dictionary<string, Session> sessions = res.ResultAs<Dictionary<string, Session>>();
+            int wins = 0;
+            foreach (var sess in sessions.Values)
+            {
+                if ((sess.winner == 0 && sess.redPawn == userID) ||
+                    (sess.winner == 1 && sess.bluePawn == userID))
+                {
+                    wins++;
+                }
+            }
+            return wins;
+        }
+
+        public string[] checkMissions(string[] missions, int numWins, int numGames)
+        {
+            //string[] missions = { "Complete 1 Game", "Complete 2 Games", "Complete 3 Games", "Online 20 minutes", "Win 1 game", "Win 2 games", "Win 2 consecutive games" };
+            string[] eventStats = { "Ongoing", "Ongoing", "Ongoing", "Ongoing", "Ongoing", "Ongoing", "Ongoing" };
+            if (numGames >= 1)
+                eventStats[0] = "Finished";
+            if (numGames >= 2)
+                eventStats[1] = "Finished";
+            if (numGames >= 3)
+                eventStats[2] = "Finished";
+            if (numWins >= 1)
+                eventStats[4] = "Finished";
+            if (numGames >= 2)
+                eventStats[5] = "Finished";
+            return eventStats;
+        }
+
+        public async Task<int> getNumberOfGames(string userID)
+        {
+            FirebaseResponse res = await client.GetAsync("SESSION/");
+            Dictionary<string, Session> sessions = res.ResultAs<Dictionary<string, Session>>();
+            int wins = 0;
+            foreach (var sess in sessions.Values)
+            {
+                if ((sess.redPawn == userID) ||
+                    ( sess.bluePawn == userID))
+                {
+                    wins++;
+                }
+            }
+            return wins;
+        }
+
+        
+
+        public static string[] AppendToArray(string[] originalArray, string newValue)
+        {
+            int originalLength = originalArray.Length;
+            string[] newArray = new string[originalLength + 1];
+
+            for (int i = 0; i < originalLength; i++)
+            {
+                newArray[i] = originalArray[i];
+            }
+
+            newArray[originalLength] = newValue;
+
+            return newArray;
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
