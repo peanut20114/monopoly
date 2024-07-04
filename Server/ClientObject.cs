@@ -114,7 +114,7 @@ namespace Server
                         });
                         server.SendMessageToOpponentClient(userName + " has connected", Id);
                     }
-                    if (message.Contains("-Blue"))
+                    else if (message.Contains("-Blue"))
                     {
                         Taken.Blue = true;
                         // Update user id Blue Pawn

@@ -117,10 +117,10 @@ namespace Client
                         Disconnect();
                     }
                     Stream.Write(
-                        Encoding.Unicode.GetBytes(ConnectionOptions.PlayerName),
+                        Encoding.Unicode.GetBytes(ConnectionOptions.PlayerName.Split('-')[1]),
                         0,
-                        Encoding.Unicode.GetBytes(ConnectionOptions.PlayerName).Length);
-                    switch (ConnectionOptions.PlayerName)
+                        Encoding.Unicode.GetBytes(ConnectionOptions.PlayerName.Split('-')[1]).Length);
+                    switch (ConnectionOptions.PlayerName.Split('-')[1])
                     {
                         case "Red":
                             RedConnected = true;
@@ -351,54 +351,54 @@ namespace Client
                     switch (message)
                     {
                         case "Both players has connected":
+                        {
+                            switch (ConnectionOptions.PlayerName.Split('-')[1])
                             {
-                                switch (ConnectionOptions.PlayerName)
-                                {
-                                    case "Red":
-                                        UpdateTextBox("Throw dices to start the game");
-                                        SetButtonEnabled(throwDiceBtn, true);
-                                        //throwDiceBtn.Enabled = true;
-                                        buyBtn.Enabled = false;
-                                        SetButtonEnabled(endTurnBtn, true);
-                                        //endTurnBtn.Enabled = true;
-                                        break;
-                                    case "Blue":
-                                        currentPlayersTurn_textbox.Text = "Red player is making his turn right now, wait";
-                                        break;
-                                }
-                                break;
+                                case "Red":
+                                    UpdateTextBox("Throw dices to start the game");
+                                    SetButtonEnabled(throwDiceBtn, true);
+                                    //throwDiceBtn.Enabled = true;
+                                    buyBtn.Enabled = false;
+                                    SetButtonEnabled(endTurnBtn, true);
+                                    //endTurnBtn.Enabled = true;
+                                    break;
+                                case "Blue":
+                                    currentPlayersTurn_textbox.Text = "Red player is making his turn right now, wait";
+                                    break;
                             }
+                            break;
+                        }
                         case "Red has connected":
-                            {
-                                RedConnected = true;
-                                ConnectionOptions.NameRedIsTaken = true;
-                                if (!BlueConnected) continue;
-                                Stream.Write(Encoding.Unicode.GetBytes("Both players has connected"), 0, Encoding.Unicode.GetBytes("Both players has connected").Length);
-                                break;
-                            }
+                        {
+                            RedConnected = true;
+                            ConnectionOptions.NameRedIsTaken = true;
+                            if (!BlueConnected) continue;
+                            Stream.Write(Encoding.Unicode.GetBytes("Both players has connected"), 0, Encoding.Unicode.GetBytes("Both players has connected").Length);
+                            break;
+                        }
                         case "Blue has connected":
-                            {
-                                BlueConnected = true;
-                                ConnectionOptions.NameBlueIsTaken = true;
-                                if (!RedConnected) continue;
-                                Stream.Write(Encoding.Unicode.GetBytes("Both players has connected"), 0, Encoding.Unicode.GetBytes("Both players has connected").Length);
-                                break;
-                            }
+                        {
+                            BlueConnected = true;
+                            ConnectionOptions.NameBlueIsTaken = true;
+                            if (!RedConnected) continue;
+                            Stream.Write(Encoding.Unicode.GetBytes("Both players has connected"), 0, Encoding.Unicode.GetBytes("Both players has connected").Length);
+                            break;
+                        }
                         case "Red pawn is already selected":
-                            {
-                                ConnectionOptions.NameRedIsTaken = true;
-                                break;
-                            }
+                        {
+                            ConnectionOptions.NameRedIsTaken = true;
+                            break;
+                        }
                         case "Blue pawn is already selected":
-                            {
-                                ConnectionOptions.NameBlueIsTaken = true;
-                                break;
-                            }
+                        {
+                            ConnectionOptions.NameBlueIsTaken = true;
+                            break;
+                        }
                         default:
-                            {
-                                Program.SessionID = message;
-                                break;
-                            }
+                        {
+                            Program.SessionID = message;
+                            break;
+                        }
                     }
                     if (message.Contains("Turn results"))
                     {
@@ -587,6 +587,7 @@ namespace Client
             }
 
             // Update the data in Firebase
+            data.end_at = DateTime.Now.ToString();
             SetResponse updateResponse = await FBclient.SetAsync("SESSION/" + Program.SessionID, data);
             Session updatedData = updateResponse.ResultAs<Session>();
         }
@@ -806,9 +807,9 @@ namespace Client
             {
                 case DialogResult.Yes:
                     if (Gamemodes.Multiplayer) Stream.Write(
-                        Encoding.Unicode.GetBytes(ConnectionOptions.PlayerName + " has left"),
+                        Encoding.Unicode.GetBytes(ConnectionOptions.PlayerName.Split('-')[1] + " has left"),
                         0,
-                        Encoding.Unicode.GetBytes(ConnectionOptions.PlayerName + " has left").Length);
+                        Encoding.Unicode.GetBytes(ConnectionOptions.PlayerName.Split('-')[1] + " has left").Length);
                     Disconnect();
                     Application.Exit();
                     break;
