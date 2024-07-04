@@ -279,7 +279,6 @@
             this.redPlayerStatusBox_richtextbox.Size = new System.Drawing.Size(183, 143);
             this.redPlayerStatusBox_richtextbox.TabIndex = 57;
             this.redPlayerStatusBox_richtextbox.Text = "";
-            this.redPlayerStatusBox_richtextbox.TextChanged += new System.EventHandler(this.redPlayerStatusBox_richtextbox_TextChanged);
             // 
             // tile0
             // 

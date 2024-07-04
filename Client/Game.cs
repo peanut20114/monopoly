@@ -79,9 +79,13 @@ namespace Client
                         Disconnect();
                     }
                     currentPlayersTurn_textbox.Text = "Waiting for second player...";
-                    throwDiceBtn.Enabled = false;
-                    buyBtn.Enabled = false;
-                    endTurnBtn.Enabled = false;
+                    SetButtonEnabled(throwDiceBtn, false);
+                    SetButtonEnabled(buyBtn, false);
+                    SetButtonEnabled(endTurnBtn, false);
+                    
+                    //throwDiceBtn.Enabled = false;
+                    //buyBtn.Enabled = false;
+                    //endTurnBtn.Enabled = false;
                     try
                     {
                         Client = new TcpClient();
@@ -204,6 +208,12 @@ namespace Client
         }
         private void UpdatePlayersStatusBoxes()
         {
+            if (InvokeRequired)
+            {
+                Invoke(new Action(UpdatePlayersStatusBoxes));
+                return;
+            }
+
             redPlayerStatusBox_richtextbox.Text = "Red player" + "\n"
                 + "Balance: " + Players[0].Balance + "\n"
                 + PropertiesToString(Players[0].PropertiesOwned);
@@ -211,6 +221,7 @@ namespace Client
                 + "Balance: " + Players[1].Balance + "\n"
                 + PropertiesToString(Players[1].PropertiesOwned);
         }
+
         private void ChangeBalance(Player player, int cashChange)
         {
             player.Balance += cashChange;
@@ -219,32 +230,32 @@ namespace Client
         private void InJail(int currentPlayer)
         {
             Players[currentPlayer].Jail += 1;
-            buyBtn.Enabled = false;
-            throwDiceBtn.Enabled = false;
+            SetButtonEnabled(throwDiceBtn, false);
+            SetButtonEnabled(buyBtn, false);
+     
+            //buyBtn.Enabled = false;
+            //throwDiceBtn.Enabled = false;
             switch (CurrentPlayerId)
             {
                 case 0:
-                    currentPlayersTurn_textbox.Text =
-                        "Red player, you are in jail!\r\nYou can move next turn. ";
+                    UpdateTextBox("Red player, you are in jail!\r\nYou can move next turn. ");
                     break;
                 case 1:
-                    currentPlayersTurn_textbox.Text =
-                        "Blue player, you are in jail!\r\nYou can move next turn. ";
+                    UpdateTextBox("Blue player, you are in jail!\r\nYou can move next turn. ");
                     break;
             }
             if (Players[currentPlayer].Jail != 3) return;
             Players[currentPlayer].InJail = false;
             Players[currentPlayer].Jail = 0;
-            throwDiceBtn.Enabled = true;
+            SetButtonEnabled(throwDiceBtn, true);
+            //throwDiceBtn.Enabled = true;
             switch (CurrentPlayerId)
             {
                 case 0:
-                    currentPlayersTurn_textbox.Text =
-                        "Red player, you are free! ";
+                    UpdateTextBox("Red player, you are free! ");
                     break;
                 case 1:
-                    currentPlayersTurn_textbox.Text =
-                        "Blue player, you are free! ";
+                    UpdateTextBox("Blue player, you are free! ");
                     break;
             }
         }
@@ -351,12 +362,13 @@ namespace Client
                                         UpdateTextBox("Throw dices to start the game");
                                         SetButtonEnabled(throwDiceBtn, true);
                                         //throwDiceBtn.Enabled = true;
-                                        buyBtn.Enabled = false;
+                                        SetButtonEnabled(buyBtn, false);
+                                        //buyBtn.Enabled = false;
                                         SetButtonEnabled(endTurnBtn, true);
                                         //endTurnBtn.Enabled = true;
                                         break;
                                     case "Blue":
-                                        currentPlayersTurn_textbox.Text = "Red player is making his turn right now, wait";
+                                        UpdateTextBox("Red player is making his turn right now, wait");
                                         break;
                                 }
                                 break;
@@ -388,7 +400,7 @@ namespace Client
                                 break;
                             }
                     }
-                    if (message.Contains("Turn results"))
+                    if (message.Contains("turn results"))
                     {
                         var tempMessage = message;
                         var subString = string.Empty;
@@ -402,13 +414,15 @@ namespace Client
                                 break;
                         }
                         tempMessage = tempMessage.Replace(subString, "");
-                        currentPlayersTurn_textbox.Invoke((MethodInvoker)delegate
-                        {
+                        currentPlayersTurn_textbox.Invoke((MethodInvoker)delegate {
                             currentPlayersTurn_textbox.Text = "Your turn";
                         });
-                        throwDiceBtn.Enabled = true;
-                        buyBtn.Enabled = false;
-                        endTurnBtn.Enabled = true;
+                        SetButtonEnabled(throwDiceBtn, true);
+                        SetButtonEnabled(buyBtn, false);
+                        SetButtonEnabled(endTurnBtn, true);
+                        //throwDiceBtn.Enabled = true;
+                        //buyBtn.Enabled = false;
+                        //endTurnBtn.Enabled = true;
                         var receivedMessage = new ReceivedMessage();
                         var stringPosition = tempMessage.Split('~')[1];
                         receivedMessage.EndPosition = Convert.ToInt32(stringPosition);
@@ -455,7 +469,7 @@ namespace Client
                         {
                             if (Players[u].Loser) count++;
                             if (Players[CurrentPlayerId].Loser || count < 1) continue;
-                            currentPlayersTurn_textbox.Text = "You won!";
+                            UpdateTextBox("You won!");
                             switch (CurrentPlayerId)
                             {
                                 case 0:
@@ -554,16 +568,20 @@ namespace Client
         private void Lose()
         {
             Players[CurrentPlayerId].Loser = true;
-            throwDiceBtn.Enabled = false;
-            buyBtn.Enabled = false;
-            endTurnBtn.Enabled = false;
+
+            SetButtonEnabled(throwDiceBtn, false);
+            SetButtonEnabled(buyBtn, false);
+            SetButtonEnabled(endTurnBtn, false);
+            //throwDiceBtn.Enabled = false;
+            //buyBtn.Enabled = false;
+            //endTurnBtn.Enabled = false;
             switch (CurrentPlayerId)
             {
                 case 0 when Players[0].Loser:
-                    currentPlayersTurn_textbox.Text = "Red player has lost!";
+                    UpdateTextBox("Red player has lost!");
                     break;
                 case 1 when Players[1].Loser:
-                    currentPlayersTurn_textbox.Text = "Blue player has lost!";
+                    UpdateTextBox("Blue player has lost!");
                     break;
             }
         }
@@ -575,26 +593,26 @@ namespace Client
         }
         private void MoveIcon(int position)
         {
-            int x, y;
+            if (InvokeRequired)
+            {
+                Invoke(new Action(() => MoveIcon(position)));
+                return;
+            }
+
+            int x = Tile[position].Location.X;
+            int y = Tile[position].Location.Y;
+
             switch (CurrentPlayerId)
             {
                 case 0:
-                    x = Tile[position].Location.X;
-                    y = Tile[position].Location.Y;
                     redPawnIcon.Location = new Point(x, y);
                     break;
                 case 1:
-                    x = Tile[position].Location.X;
-                    y = Tile[position].Location.Y;
                     bluePawnIcon.Location = new Point(x, y);
                     break;
             }
         }
 
-        private void redPlayerStatusBox_richtextbox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private async Task<int> MoveTileByTile(int from, int to)
         {
@@ -626,21 +644,23 @@ namespace Client
             switch (CurrentPlayerId)
             {
                 case 0:
-                    currentPlayersTurn_textbox.Text = "Red player's turn. ";
+                    UpdateTextBox("Red player's turn. ");
                     break;
                 case 1:
-                    currentPlayersTurn_textbox.Text = "Blue player's turn. ";
+                    UpdateTextBox("Blue player's turn. ");
                     break;
             }
             bool visitedJailExploration = false, visitedTaxTile = false, visitedGo = false, visitedFreeParking = false, goingToJail = false;
-            buyBtn.Enabled = true;
+            SetButtonEnabled(buyBtn, true);
+            //buyBtn.Enabled = true;
             UpdatePlayersStatusBoxes();
             var rand = new Random();
             var firstDice = rand.Next(1, 7);
             var secondDice = rand.Next(1, 7);
             Dice = firstDice + secondDice;
             whatIsOnDices_textbox.Text = "On dices: " + firstDice + " and " + secondDice + ". Summary: " + Dice + ". ";
-            throwDiceBtn.Enabled = false;
+            SetButtonEnabled(throwDiceBtn, false);
+            //throwDiceBtn.Enabled = false;
             var positionBeforeDicing = Players[CurrentPlayerId].Position;
             CurrentPosition = Players[CurrentPlayerId].Position + Dice;
             var positionAfterDicing = Players[CurrentPlayerId].Position + Dice;
@@ -648,15 +668,16 @@ namespace Client
             switch (CurrentPosition)
             {
                 case 0:
-                    buyBtn.Enabled = false;
+                    SetButtonEnabled(buyBtn, false);
+                    //buyBtn.Enabled = false;
                     visitedGo = true;
                     break;
                 case 10 when Players[CurrentPlayerId].InJail is false:
-                    buyBtn.Enabled = false;
+                    SetButtonEnabled(buyBtn, false);
                     visitedJailExploration = true;
                     break;
                 case 20:
-                    buyBtn.Enabled = false;
+                    SetButtonEnabled(buyBtn, false);
                     visitedFreeParking = true;
                     break;
                 case 30:
@@ -675,7 +696,7 @@ namespace Client
             if (Properties[CurrentPosition].Color is "White")
             {
                 ChangeBalance(Players[CurrentPlayerId], -200);
-                buyBtn.Enabled = false;
+                SetButtonEnabled(buyBtn, false);
                 visitedTaxTile = true;
             }
             Players[CurrentPlayerId].Position = CurrentPosition;
@@ -702,10 +723,10 @@ namespace Client
                 switch (CurrentPlayerId)
                 {
                     case 0:
-                        currentPlayersTurn_textbox.Text = "Red player, you are in jail! \r\nYou will skip this and next turn. ";
+                        UpdateTextBox("Red player, you are in jail! \r\nYou will skip this and next turn. ");
                         break;
                     case 1:
-                        currentPlayersTurn_textbox.Text = "Blue player, you are in jail! \r\nYou will skip this and next turn. ";
+                        UpdateTextBox("Blue player, you are in jail! \r\nYou will skip this and next turn. ");
                         break;
                 }
             }
@@ -716,7 +737,7 @@ namespace Client
             {
                 if (Players[i].Loser) count++;
                 if (Players[CurrentPlayerId].Loser || count < 1) continue;
-                currentPlayersTurn_textbox.Text = "You won! Congratulations!";
+                UpdateTextBox("You won! Congratulations!");
                 switch (CurrentPlayerId)
                 {
                     case 0:
@@ -728,7 +749,7 @@ namespace Client
                 }
             }
             if (Players[CurrentPlayerId].PropertiesOwned[CurrentPosition] == CurrentPosition || !Properties[CurrentPosition].Owned) return;
-            buyBtn.Enabled = false;
+            SetButtonEnabled(buyBtn, false);
             switch (CurrentPlayerId)
             {
                 case 0:
@@ -755,10 +776,10 @@ namespace Client
             switch (CurrentPlayerId)
             {
                 case 0:
-                    currentPlayersTurn_textbox.Text = "Red player, you landed on another player's tile and payed ";
+                    UpdateTextBox("Red player, you landed on another player's tile and payed ");
                     break;
                 case 1:
-                    currentPlayersTurn_textbox.Text = "Blue player, you landed on another player's tile and payed ";
+                    UpdateTextBox("Blue player, you landed on another player's tile and payed ");
                     break;
             }
             if (CurrentPosition is 5 || CurrentPosition is 15 || CurrentPosition is 25 || CurrentPosition is 35) currentPlayersTurn_textbox.Text += Dice * 20;
@@ -774,11 +795,11 @@ namespace Client
                     Properties[CurrentPosition].Owned = true;
                     Players[CurrentPlayerId].NumberOfPropertiesOwned++;
                     UpdatePlayersStatusBoxes();
-                    buyBtn.Enabled = false;
+                    SetButtonEnabled(buyBtn, false);
                     DrawCircle(CurrentPosition, CurrentPlayerId);
                 }
-                else currentPlayersTurn_textbox.Text = "You don't have enough money for that";
-            else currentPlayersTurn_textbox.Text = "You cannot do that right now";
+                else UpdateTextBox("You don't have enough money for that");
+            else UpdateTextBox("You cannot do that right now");
             if (Players[CurrentPlayerId].Balance <= 0) Lose();
         }
         private void QuitGameBtn_Click(object sender, EventArgs e)
@@ -809,7 +830,7 @@ namespace Client
                     if (Players[i].Loser) count++;
                     if (Players[CurrentPlayerId].Loser || count < 1) continue;
 
-                    UpdateUI(() => currentPlayersTurn_textbox.Text = "You won!");
+                    UpdateTextBox("You won!");
 
                     switch (CurrentPlayerId)
                     {
@@ -822,7 +843,7 @@ namespace Client
                     }
                 }
 
-                UpdateUI(() => currentPositionInfo_richtextbox.Text = string.Empty);
+                currentPositionInfo_richtextbox.Text = string.Empty;
 
                 var turnLogString = string.Empty;
                 switch (CurrentPlayerId)
@@ -850,21 +871,21 @@ namespace Client
 
                 if (CurrentPlayerId is 0)
                 {
-                    UpdateUI(() => currentPlayersTurn_textbox.Text = "Blue player is making his turn right now, wait.");
+                    UpdateTextBox("Blue player is making his turn right now, wait. ");
                     Stream.Write(Encoding.Unicode.GetBytes(turnLogString), 0, Encoding.Unicode.GetBytes(turnLogString).Length);
                 }
                 else
                 {
-                    UpdateUI(() => currentPlayersTurn_textbox.Text = "Red player is making his turn right now, wait.");
+                    UpdateTextBox("Red player is making his turn right now, wait. ");
                     Stream.Write(Encoding.Unicode.GetBytes(turnLogString), 0, Encoding.Unicode.GetBytes(turnLogString).Length);
                 }
 
-                UpdateUI(() =>
-                {
-                    throwDiceBtn.Enabled = false;
-                    buyBtn.Enabled = false;
-                    endTurnBtn.Enabled = false;
-                });
+                SetButtonEnabled(throwDiceBtn, false);
+                SetButtonEnabled(buyBtn, false);
+                SetButtonEnabled(endTurnBtn, false);
+                //throwDiceBtn.Enabled = false;
+                //buyBtn.Enabled = false;
+                //endTurnBtn.Enabled = false;
             }
 
             if (Gamemodes.Singleplayer)
@@ -873,18 +894,18 @@ namespace Client
                 switch (CurrentPlayerId)
                 {
                     case 0:
-                        UpdateUI(() => currentPlayersTurn_textbox.Text = "Red player's turn.");
+                        UpdateTextBox("Red player's turn. ");
                         break;
                     case 1:
-                        UpdateUI(() => currentPlayersTurn_textbox.Text = "Blue player's turn.");
+                        UpdateTextBox("Blue player's turn. ");
                         break;
                 }
 
-                UpdateUI(() =>
-                {
-                    throwDiceBtn.Enabled = true;
-                    buyBtn.Enabled = false;
-                });
+                SetButtonEnabled(throwDiceBtn, true);
+                SetButtonEnabled(buyBtn, false);
+                
+                //throwDiceBtn.Enabled = true;
+                //buyBtn.Enabled = false;
 
                 if (Players[CurrentPlayerId].InJail)
                 {
@@ -901,7 +922,7 @@ namespace Client
                     if (Players[i].Loser) count++;
                     if (Players[CurrentPlayerId].Loser || count < 1) continue;
 
-                    UpdateUI(() => currentPlayersTurn_textbox.Text = "You won!");
+                    UpdateTextBox("You won!");
 
                     switch (CurrentPlayerId)
                     {
@@ -913,19 +934,7 @@ namespace Client
                             break;
                     }
                 }
-
-                UpdateUI(() => currentPositionInfo_richtextbox.Text = string.Empty);
-            }
-        }
-        private void UpdateUI(Action action)
-        {
-            if (InvokeRequired)
-            {
-                Invoke(action);
-            }
-            else
-            {
-                action();
+                currentPositionInfo_richtextbox.Text = string.Empty;
             }
         }
     }
