@@ -554,6 +554,10 @@
             // tile27
             // 
             this.tile27.BackColor = System.Drawing.Color.Transparent;
+            this.tile27.Location = new System.Drawing.Point(509, 0);
+            this.tile27.Name = "tile27";
+            this.tile27.Size = new System.Drawing.Size(65, 85);
+            this.tile27.TabIndex = 136;
             this.tile27.Location = new System.Drawing.Point(559, 1);
             this.tile27.Margin = new System.Windows.Forms.Padding(0);
             this.tile27.Name = "tile27";

@@ -65,8 +65,8 @@ namespace Client
 
         private void btn_History_Click(object sender, EventArgs e)
         {
-            History form = new History();
-            form.Show();
+            /*History form = new History();
+            form.Show();*/
         }
 
         private async void HomePage_Load(object sender, EventArgs e)

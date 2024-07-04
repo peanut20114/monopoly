@@ -324,6 +324,8 @@
         otm88/6mc86KPc7xHHbiEj9u34mO63iHRAVey28xVjjCP0Ii8QP1jM2UNm/E5gAAAABJRU5ErkJggg==
 </value>
   </data>
+<<<<<<< HEAD
+=======
   <data name="pbControlMenu.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAecAAAN2CAYAAADDqEGbAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
@@ -39288,6 +39290,7 @@
         /LTNAaCP55/MWedGph8s7iz9f40otvpltC15AAAAAElFTkSuQmCC
 </value>
   </data>
+>>>>>>> 2c6eb15983bdef7ba3380f466e5654aa8c433c07
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEAgIAAAAEAIAAoCAEAFgAAACgAAACAAAAAAAEAAAEAIAAAAAAAAAABAPY6AQD2OgEAAAAAAAAA
