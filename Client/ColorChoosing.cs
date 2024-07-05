@@ -18,12 +18,12 @@ namespace Client
             switch (tbColor.Text)
             {
                 case "Red":
-                    ConnectionOptions.PlayerName = "Red";
+                    ConnectionOptions.PlayerName = Program.UserID.ToString() + "-Red";
                     Close();
                     DialogResult = DialogResult.OK;
                     break;
                 case "Blue":
-                    ConnectionOptions.PlayerName = "Blue";
+                    ConnectionOptions.PlayerName = Program.UserID.ToString() + "-Blue";
                     Close();
                     DialogResult = DialogResult.OK;
                     break;

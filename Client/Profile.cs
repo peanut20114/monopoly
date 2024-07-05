@@ -33,10 +33,25 @@ namespace Client
         {
             FirebaseResponse res = await client.GetAsync("USER/" + Program.UserID);
             User data = res.ResultAs<User>();
-            richTextBox2.Text = data.UserName;
-            richTextBox3.Text = data.Birthday;
-            richTextBox4.Text = data.Country;
-            richTextBox5.Text = data.Last_Logged_In;
+            nameLabel.Text = data.username;
+            birthdayLabel.Text = data.birthday;
+            countryLabel.Text = data.country;
+            registerLabel.Text = data.register_at.ToString();
+            introBox.Text = data.intro;
+        }
+
+        private void changePassLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            ChangePassword form = new ChangePassword();
+            form.Show();
+            this.Close();
+        }
+
+        private void editProfileLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            EditProfile form = new EditProfile();
+            form.Show();
+            this.Close();
         }
     }
 }

@@ -1,12 +1,23 @@
-﻿using System;
+﻿using FireSharp.Config;
+using FireSharp.Interfaces;
+using FireSharp.Response;
+using System;
+using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Windows.Forms;
+using static System.Collections.Specialized.BitVector32;
 
 namespace Server
 {
     public class ClientObject
     {
+        IFirebaseConfig config = new FirebaseConfig
+        {
+            AuthSecret = "RupkJmOpqVD7u65mZo31WEtDRqKWpkN2Oj6UtbNT",
+            BasePath = "https://monopoly-8058b-default-rtdb.asia-southeast1.firebasedatabase.app/"
+        };
+        IFirebaseClient FBclient;
         private readonly TcpClient Client;
         private readonly ServerObject server;
         private string userName;
@@ -19,7 +30,7 @@ namespace Server
         }
         protected internal string Id { get; }
         protected internal NetworkStream Stream { get; private set; }
-        public void Process()
+        public async void Process()
         {
             try
             {
@@ -36,28 +47,6 @@ namespace Server
                                 {
                                     Program.f.tbLog.Text += "[" + DateTime.Now + "] " + message + Environment.NewLine;
                                 });
-                                break;
-                            }
-                        case "Red":
-                            {
-                                Taken.Red = true;
-                                userName = message;
-                                Program.f.tbLog.Invoke((MethodInvoker)delegate
-                                {
-                                    Program.f.tbLog.Text += "[" + DateTime.Now + "] " + userName + " has connected" + Environment.NewLine;
-                                });
-                                server.SendMessageToOpponentClient(userName + " has connected", Id);
-                                break;
-                            }
-                        case "Blue":
-                            {
-                                Taken.Blue = true;
-                                userName = message;
-                                Program.f.tbLog.Invoke((MethodInvoker)delegate
-                                {
-                                    Program.f.tbLog.Text += "[" + DateTime.Now + "] " + userName + " has connected" + Environment.NewLine;
-                                });
-                                server.SendMessageToOpponentClient(userName + " has connected", Id);
                                 break;
                             }
                         case "Someone has connected":
@@ -106,6 +95,44 @@ namespace Server
                                 server.RemoveConnection(this.Id);
                                 break;
                             }
+                    }
+                    if (message.Contains("-Red"))
+                    {
+                        Taken.Red = true;
+                        // Update user id Red Pawn
+                        FBclient = new FireSharp.FirebaseClient(config);
+                        FirebaseResponse res = await FBclient.GetAsync("SESSION/" + Program.sessionID);
+                        Session data = res.ResultAs<Session>();
+                        data.redPawn = message.Split('-')[0];
+                        // Update the data in Firebase
+                        SetResponse updateResponse = await FBclient.SetAsync("SESSION/" + Program.sessionID, data);
+                        Session updatedData = updateResponse.ResultAs<Session>();
+                        // End updated
+                        userName = message.Split('-')[1];
+                        Program.f.tbLog.Invoke((MethodInvoker)delegate
+                        {
+                            Program.f.tbLog.Text += "[" + DateTime.Now + "] " + userName + " has connected" + Environment.NewLine;
+                        });
+                        server.SendMessageToOpponentClient(userName + " has connected", Id);
+                    }
+                    else if (message.Contains("-Blue"))
+                    {
+                        Taken.Blue = true;
+                        // Update user id Blue Pawn
+                        FBclient = new FireSharp.FirebaseClient(config);
+                        FirebaseResponse res = await FBclient.GetAsync("SESSION/" + Program.sessionID);
+                        Session data = res.ResultAs<Session>();
+                        data.bluePawn = message.Split('-')[0];
+                        // Update the data in Firebase
+                        SetResponse updateResponse = await FBclient.SetAsync("SESSION/" + Program.sessionID, data);
+                        Session updatedData = updateResponse.ResultAs<Session>();
+                        // End updated
+                        userName = message.Split('-')[1];
+                        Program.f.tbLog.Invoke((MethodInvoker)delegate
+                        {
+                            Program.f.tbLog.Text += "[" + DateTime.Now + "] " + userName + " has connected" + Environment.NewLine;
+                        });
+                        server.SendMessageToOpponentClient(userName + " has connected", Id);
                     }
                     if (message.Contains("Red player's turn results"))
                     {

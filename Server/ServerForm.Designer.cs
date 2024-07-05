@@ -40,6 +40,7 @@
             this.tsServerControl.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.tsServerControl.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tsServerControl.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.tsServerControl.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.tsServerControl.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnTurnOn,
             this.btnTurnOff});

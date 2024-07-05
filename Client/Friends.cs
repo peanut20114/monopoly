@@ -1,13 +1,13 @@
 ﻿using System;
+using System.Windows.Forms;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using FireSharp.Config;
 using FireSharp.Interfaces;
 using FireSharp.Response;
@@ -24,29 +24,14 @@ namespace Client
         };
 
         IFirebaseClient client;
-
         public Friends()
         {
             client = new FireSharp.FirebaseClient(config);
             InitializeComponent();
         }
 
-        private void LoadPlayerData()
-        {
-            string jsonFilePath = "D:\\UIT\\LapTrinhMang\\monopoly\\Fake_Database\\USER.json";
-            if(File.Exists(jsonFilePath)) 
-            {
-                string jsonText = File.ReadAllText(jsonFilePath);
-                players = JsonConvert.DeserializeObject<Dictionary<string, Player>>(jsonText);
-            }
-            else
-            {
-                MessageBox.Show("Player not found.");
-                players = new Dictionary<string, Player>();
-            }
-        }
-
-        private async  void button1_Click(object sender, EventArgs e)
+        string userID = null;
+        private async void SearchButton_Click(object sender, EventArgs e)
         {
             FirebaseResponse res = await client.GetAsync("USER/");
             dynamic IDs = res.ResultAs<dynamic>();
@@ -54,16 +39,20 @@ namespace Client
             listView1.Items.Clear();
             foreach (var id in IDs)
             {
-                string userID = id.Name;
+                userID = id.Name;
                 FirebaseResponse userRes = await client.GetAsync("USER/" + userID);
                 User userdata = userRes.ResultAs<User>();
                 string userName = userdata.username;
-                string lastLoggedIn = userdata.last_logged_in;
+                string birthday = userdata.birthday;
+                string country = userdata.country;
+                string lastLoggedIn = userdata.last_logged_in.ToString();
 
-                if (SearchBox.Text.ToLower() == userName.ToLower())
+                if (SearchBox.Text.Trim().ToLower() == userName.Trim().ToLower())
                 {
                     found = true;
                     ListViewItem item = new ListViewItem(userName);
+                    item.SubItems.Add(birthday.ToString());
+                    item.SubItems.Add(country.ToString());
                     item.SubItems.Add(lastLoggedIn.ToString());
                     listView1.Items.Add(item);
                     break;
@@ -72,6 +61,51 @@ namespace Client
             if (!found)
             {
                 MessageBox.Show("Player not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private async void addFrBtn_Click(object sender, EventArgs e)
+        {
+            if (listView1.SelectedItems.Count > 0)
+            {
+                FirebaseResponse currentUserRes = await client.GetAsync("USER/" + Program.UserID);
+                User currUser = currentUserRes.ResultAs<User>();
+                if (currUser != null)
+                {
+                    List<int> friendsList = currUser.friends.ToList();
+
+                    int selectedUserID = int.Parse(userID);
+
+                    if (!friendsList.Contains(selectedUserID))
+                    {
+                        friendsList.Add(selectedUserID);
+                        currUser.friends = friendsList.ToArray();
+
+                        FirebaseResponse updateRes = await client.SetAsync("USER/" + Program.UserID, currUser);
+
+
+                        if (updateRes.StatusCode == System.Net.HttpStatusCode.OK)
+                        {
+                            MessageBox.Show($"You have added {listView1.SelectedItems[0].Text}", "Add Friend", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Error when adding friends.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("This player has been your friend already.", "Add Friend", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Cannot find this player information.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please choose one player to add!", "Add Friend", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }
