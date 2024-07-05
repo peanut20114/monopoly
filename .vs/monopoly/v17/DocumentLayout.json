@@ -1,0 +1,70 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Code\\BasicNetworkPrograming\\backup\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{1836D6D0-367C-4169-BD41-60F6D92D0B50}|Client\\Client.csproj|d:\\code\\basicnetworkprograming\\backup\\client\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1836D6D0-367C-4169-BD41-60F6D92D0B50}|Client\\Client.csproj|solutionrelative:client\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1836D6D0-367C-4169-BD41-60F6D92D0B50}|Client\\Client.csproj|d:\\code\\basicnetworkprograming\\backup\\client\\changepassword.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{1836D6D0-367C-4169-BD41-60F6D92D0B50}|Client\\Client.csproj|solutionrelative:client\\changepassword.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1836D6D0-367C-4169-BD41-60F6D92D0B50}|Client\\Client.csproj|D:\\Code\\BasicNetworkPrograming\\backup\\client\\changepassword.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1836D6D0-367C-4169-BD41-60F6D92D0B50}|Client\\Client.csproj|solutionrelative:client\\changepassword.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Code\\BasicNetworkPrograming\\backup\\Client\\Program.cs",
+              "RelativeDocumentMoniker": "Client\\Program.cs",
+              "ToolTip": "D:\\Code\\BasicNetworkPrograming\\backup\\Client\\Program.cs",
+              "RelativeToolTip": "Client\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAArAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-05T10:56:29.831Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ChangePassword.cs",
+              "DocumentMoniker": "D:\\Code\\BasicNetworkPrograming\\backup\\Client\\ChangePassword.cs",
+              "RelativeDocumentMoniker": "Client\\ChangePassword.cs",
+              "ToolTip": "D:\\Code\\BasicNetworkPrograming\\backup\\Client\\ChangePassword.cs",
+              "RelativeToolTip": "Client\\ChangePassword.cs",
+              "ViewState": "AQIAAC0AAAAAAAAAAAAYwD4AAABEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-05T10:21:51.471Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ChangePassword.cs [Design]",
+              "DocumentMoniker": "D:\\Code\\BasicNetworkPrograming\\backup\\Client\\ChangePassword.cs",
+              "RelativeDocumentMoniker": "Client\\ChangePassword.cs",
+              "ToolTip": "D:\\Code\\BasicNetworkPrograming\\backup\\Client\\ChangePassword.cs [Design]",
+              "RelativeToolTip": "Client\\ChangePassword.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-05T10:21:43.291Z",
+              "EditorCaption": " [Design]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
